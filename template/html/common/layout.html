@@ -103,6 +103,9 @@
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
+    <left_menu>
+        {{ template "left_menu" .}}
+    </left_menu>
     <main>
         {{template "content" .}}
     </main>
