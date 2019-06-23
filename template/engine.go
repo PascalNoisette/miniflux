@@ -71,7 +71,12 @@ func (e *Engine) Render(name, language string, data interface{}) []byte {
 	})
 
 	var b bytes.Buffer
-	err := tpl.ExecuteTemplate(&b, "base", data)
+
+	base, ok := data.(map[string]interface {})["base"]
+	if (!ok) {
+		base = "base"
+	}
+	err := tpl.ExecuteTemplate(&b, base.(string), data)
 	if err != nil {
 		logger.Fatal("[Template] Unable to render template: %v", err)
 	}

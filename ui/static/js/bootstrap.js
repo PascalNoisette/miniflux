@@ -64,6 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
         onClick(".header nav li", (event) => onClickMainMenuListItem(event));
     }
 
+
+    LeftMenu.load()
+
     if ("serviceWorker" in navigator) {
         let scriptElement = document.getElementById("service-worker-script");
         if (scriptElement) {

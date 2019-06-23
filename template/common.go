@@ -3,6 +3,10 @@
 package template // import "miniflux.app/template"
 
 var templateCommonMap = map[string]string{
+	"ajax": `{{ define "ajax" }}
+        {{template "content" .}}
+{{ end }}
+`,
 	"entry_pagination": `{{ define "entry_pagination" }}
 <div class="pagination">
     <div class="pagination-prev">
@@ -227,16 +231,7 @@ var templateCommonMap = map[string]string{
 `,
 	"left_menu": `{{ define "left_menu"}}
         <div class="left_menu">
-            LEFT MENU HERE
-            LEFT MENU HERE
-            LEFT MENU HERE
-            LEFT MENU HERE
-            <br/>
-            LEFT MENU HERE
-            <br/>
-            LEFT MENU HERE
-            <br/>
-            LEFT MENU HERE
+            <a href="{{ route "feeds" }}?ajax=true">click</a>
         </div>
 {{ end }}`,
 	"pagination": `{{ define "pagination" }}
@@ -262,9 +257,10 @@ var templateCommonMap = map[string]string{
 }
 
 var templateCommonMapChecksums = map[string]string{
+	"ajax":             "1439fe04aa8da9a1b9f936bfbca8d8c71427e52bd01bb16a173d3e851e8fd499",
 	"entry_pagination": "4faa91e2eae150c5e4eab4d258e039dfdd413bab7602f0009360e6d52898e353",
 	"item_meta":        "34deb081a054f2948ad808bdb2c8603d6ab00c58f2f50c4ead0b47ae092888eb",
 	"layout":           "f0b1f3697b3b909bf3cb0a53a3a66187d76ea9bc0b9860f890f5d0dd2c290e6a",
-	"left_menu":        "3e9d259cdfcd434ecb3406b5e2aeee1e794f07dadf8a1ca694655c7b76da9f92",
+	"left_menu":        "001ff4cf8843aabaf145e895a9e216f6787376e4d2a9fec915147b7a1d09df86",
 	"pagination":       "3386e90c6e1230311459e9a484629bc5d5bf39514a75ef2e73bbbc61142f7abb",
 }

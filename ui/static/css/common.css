@@ -302,6 +302,18 @@ left_menu {
         background-color: #f1f1f1;
         overflow: auto;
         float: left;
+
+    }
+    left_menu .item-meta, left_menu .page-header, left_menu .category {
+        display: none;
+    }
+    left_menu .item-header{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    left_menu article.item{
+        margin-bottom: 1px;
     }
 }
 

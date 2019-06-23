@@ -35,5 +35,9 @@ func (h *handler) showFeedsPage(w http.ResponseWriter, r *http.Request) {
 	view.Set("countUnread", h.store.CountUnreadEntries(user.ID))
 	view.Set("countErrorFeeds", h.store.CountErrorFeeds(user.ID))
 
+	if (request.HasQueryParam(r, "ajax")) {
+		view.Set("base", "ajax")
+	}
+
 	html.OK(w, r, view.Render("feeds"))
 }
