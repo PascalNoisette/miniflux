@@ -230,9 +230,11 @@ var templateCommonMap = map[string]string{
 {{ end }}
 `,
 	"left_menu": `{{ define "left_menu"}}
+    {{ if .user }}
         <div class="left_menu">
             <a href="{{ route "feeds" }}?ajax=true">click</a>
         </div>
+    {{ end }}
 {{ end }}`,
 	"pagination": `{{ define "pagination" }}
 <div class="pagination">
@@ -261,6 +263,6 @@ var templateCommonMapChecksums = map[string]string{
 	"entry_pagination": "4faa91e2eae150c5e4eab4d258e039dfdd413bab7602f0009360e6d52898e353",
 	"item_meta":        "34deb081a054f2948ad808bdb2c8603d6ab00c58f2f50c4ead0b47ae092888eb",
 	"layout":           "f0b1f3697b3b909bf3cb0a53a3a66187d76ea9bc0b9860f890f5d0dd2c290e6a",
-	"left_menu":        "001ff4cf8843aabaf145e895a9e216f6787376e4d2a9fec915147b7a1d09df86",
+	"left_menu":        "5e90554f723d77d0a16e00d4cdd79d56df444139fdbb3f192f4947c1c724cf82",
 	"pagination":       "3386e90c6e1230311459e9a484629bc5d5bf39514a75ef2e73bbbc61142f7abb",
 }

@@ -285,23 +285,14 @@ left_menu {
     display: none;
 }
 @media (min-width: 1024px) {
-    .header nav{
-        margin-left: 274px;
-    }
-    main{
-        max-width: 750px;
-        margin-left: 274px;
-    }
-    body {
-        margin: auto;
-        max-width: 1024px;
-    }
     left_menu {
         display: block;
-        max-width: 274px;
+        max-width: 264px;
         background-color: #f1f1f1;
         overflow: auto;
         float: left;
+        margin-right:10px;
+        margin-bottom: 10px;
 
     }
     left_menu .item-meta, left_menu .page-header, left_menu .category {
@@ -314,6 +305,9 @@ left_menu {
     }
     left_menu article.item{
         margin-bottom: 1px;
+    }
+    left_menu .alert{
+        display: none;
     }
 }
 
