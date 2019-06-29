@@ -285,18 +285,20 @@ left_menu {
     display: none;
 }
 @media (min-width: 1024px) {
+    body {
+        max-width: 1024px;
+    }
     left_menu {
         display: block;
-        max-width: 264px;
+        width: 24%;
         background-color: #f1f1f1;
         overflow: auto;
         float: left;
-        margin-right:10px;
+        margin-right:1%;
         margin-bottom: 10px;
         padding-top: 10px;
     }
     left_menu .menu_item{
-        max-width: 240px;
         padding-left: 1em;
         padding-bottom: 1em;
     }
@@ -310,7 +312,11 @@ left_menu {
     }
     left_menu + main{
         float:left;
-        width: 475px;
+        width: 75%;
+    }
+    .breaker {
+        display: block;
+        clear: both;
     }
 }
 
