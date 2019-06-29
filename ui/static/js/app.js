@@ -128,6 +128,7 @@ function handleEntryStatus(element) {
 
 // Change the entry status to the opposite value.
 function toggleEntryStatus(element, toasting) {
+    console.log("//TODO silently option");
     let entryID = parseInt(element.dataset.id, 10);
     let link = element.querySelector("a[data-toggle-status]");
 
@@ -267,6 +268,8 @@ function toggleBookmark(parentElement, toasting) {
 
 // Send the Ajax request to download the original web page.
 function handleFetchOriginalContent() {
+    console.log("//TODO target disapear fetchOriginalContent(event.target); ")
+
     if (isListView()) {
         return;
     }

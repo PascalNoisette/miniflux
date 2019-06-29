@@ -45,15 +45,27 @@ document.addEventListener("DOMContentLoaded", function () {
     onClick("a[data-action=markPageAsRead]", () => handleConfirmationMessage(event.target, () => markPageAsRead()));
     onClick("a[data-toggle-status]", (event) => handleEntryStatus(event.target));
 
-    new AppearHandler(".item-status-unread");
 
+    new AppearHandler(
+        ".item-status-unread",
+        {
+            "onappear" : function(e){
+            },
+            "ondisappear" : function(element) {
+                let currentStatus = element.querySelector("a[data-toggle-status]").dataset.value;
+                if (element.dataset.belowTopEdge == "false" && currentStatus == "unread") {
+                    toggleEntryStatus(element);
+                }
+            }
+        }
+    );
     let mouseHandler = new MouseHandler();
     mouseHandler.onClick("a[data-save-entry]", (event) => {
-        EntryHandler.saveEntry(event.target);
+        saveEntry(event.target);
     });
 
     mouseHandler.onClick("a[data-toggle-bookmark]", (event) => {
-        EntryHandler.toggleBookmark(event.target);
+        toggleBookmark(event.target);
     });
 
     mouseHandler.onClick("a[data-toggle-status]", (event) => {
@@ -63,12 +75,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (currentItem) {
-            EntryHandler.toggleEntryStatus(currentItem);
+            toggleEntryStatus(currentItem);
         }
     });
 
     mouseHandler.onClick("a[data-fetch-content-entry]", (event) => {
-        EntryHandler.fetchOriginalContent(event.target);
+        handleFetchOriginalContent();
     });
 
     mouseHandler.onClick("a[data-on-click=markPageAsRead]", (event) => {
