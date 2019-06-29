@@ -195,6 +195,7 @@ func main() {
 			"ui/static/js/link_state_handler.js",
 			"ui/static/js/left_menu.js",
 			"ui/static/js/article_view.js",
+			"ui/static/js/appear.js",
 			"ui/static/js/bootstrap.js",
 		},
 		"sw": []string{

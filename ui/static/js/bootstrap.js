@@ -45,6 +45,36 @@ document.addEventListener("DOMContentLoaded", function () {
     onClick("a[data-action=markPageAsRead]", () => handleConfirmationMessage(event.target, () => markPageAsRead()));
     onClick("a[data-toggle-status]", (event) => handleEntryStatus(event.target));
 
+    new AppearHandler(".item-status-unread");
+
+    let mouseHandler = new MouseHandler();
+    mouseHandler.onClick("a[data-save-entry]", (event) => {
+        EntryHandler.saveEntry(event.target);
+    });
+
+    mouseHandler.onClick("a[data-toggle-bookmark]", (event) => {
+        EntryHandler.toggleBookmark(event.target);
+    });
+
+    mouseHandler.onClick("a[data-toggle-status]", (event) => {
+        let currentItem = DomHelper.findParent(event.target, "entry");
+        if (! currentItem) {
+            currentItem = DomHelper.findParent(event.target, "item");
+        }
+
+        if (currentItem) {
+            EntryHandler.toggleEntryStatus(currentItem);
+        }
+    });
+
+    mouseHandler.onClick("a[data-fetch-content-entry]", (event) => {
+        EntryHandler.fetchOriginalContent(event.target);
+    });
+
+    mouseHandler.onClick("a[data-on-click=markPageAsRead]", (event) => {
+        navHandler.markPageAsRead(event.target.dataset.showOnlyUnread || false);
+    });
+
     onClick("a[data-confirm]", (event) => handleConfirmationMessage(event.target, (url, redirectURL) => {
         let request = new RequestBuilder(url);
 
