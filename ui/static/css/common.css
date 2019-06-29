@@ -295,20 +295,39 @@ left_menu {
         overflow: auto;
         float: left;
         margin-right:1%;
-        margin-bottom: 10px;
-        padding-top: 10px;
+        font-size: 80%;
+    }
+    .left_menu{
+        
+    }
+    left_menu .menu_category{
+        padding-left: 1em;
+        padding-top: 1em;
+    }
+    left_menu .menu_category a{
+        text-decoration: none;
+        color: black;
     }
     left_menu .menu_item{
         padding-left: 1em;
-        padding-bottom: 1em;
+        padding-bottom: 5px;
     }
     left_menu .menu_item .title{
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        width: 80%;
+        float: left;
     }
     left_menu .menu_item a{
         text-decoration: none;
+    }
+    left_menu .unread-counter-0 a{
+        color:gray;
+    }
+    left_menu .menu_unread{
+        vertical-align: sub;
+        display: inline;
     }
     left_menu + main{
         float:left;

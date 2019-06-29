@@ -304,6 +304,85 @@ func (s *Storage) WeeklyFeedEntryCount(userID, feedID int64) (int, error) {
 	return weeklyCount, nil
 }
 
+// Feeds returns all feeds of the given user.
+func (s *Storage) LeftMenuFeedsSummary(userID int64) (map[model.Category]model.Feeds, error) {
+
+	res := make(map[model.Category]model.Feeds, 0)
+
+	query := `SELECT
+		f.id, f.feed_url, f.site_url, f.title, f.etag_header, f.last_modified_header,
+		f.user_id, f.checked_at at time zone u.timezone,
+		f.parsing_error_count, f.parsing_error_msg,
+		f.scraper_rules, f.rewrite_rules, f.crawler, f.user_agent,
+		f.username, f.password,
+		f.category_id, c.title as category_title,
+		fi.icon_id,
+		u.timezone,
+		count(status) as Unread
+		FROM feeds f
+		LEFT JOIN categories c ON c.id=f.category_id
+		LEFT JOIN feed_icons fi ON fi.feed_id=f.id
+		LEFT JOIN users u ON u.id=f.user_id
+		LEFT JOIN entries e ON f.id=e.feed_id and status='unread'
+		WHERE f.user_id=$1
+		GROUP BY f.id, c.id, fi.icon_id, u.timezone
+		ORDER BY Unread DESC, lower(c.title) ASC, lower(f.title) ASC`
+
+	rows, err := s.db.Query(query, userID)
+	if err != nil {
+		return nil, fmt.Errorf("unable to fetch feeds: %v", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var feed model.Feed
+		var iconID interface{}
+		var tz string
+		feed.Category = &model.Category{UserID: userID}
+
+		err := rows.Scan(
+			&feed.ID,
+			&feed.FeedURL,
+			&feed.SiteURL,
+			&feed.Title,
+			&feed.EtagHeader,
+			&feed.LastModifiedHeader,
+			&feed.UserID,
+			&feed.CheckedAt,
+			&feed.ParsingErrorCount,
+			&feed.ParsingErrorMsg,
+			&feed.ScraperRules,
+			&feed.RewriteRules,
+			&feed.Crawler,
+			&feed.UserAgent,
+			&feed.Username,
+			&feed.Password,
+			&feed.Category.ID,
+			&feed.Category.Title,
+			&iconID,
+			&tz,
+			&feed.Unread,
+		)
+
+		if err != nil {
+			return nil, fmt.Errorf("unable to fetch feeds row: %v", err)
+		}
+
+		if iconID != nil {
+			feed.Icon = &model.FeedIcon{FeedID: feed.ID, IconID: iconID.(int64)}
+		}
+
+		feed.CheckedAt = timezone.Convert(tz, feed.CheckedAt)
+		_, categoryExists := res[*feed.Category]
+		if (!categoryExists) {
+			res[*feed.Category] = make(model.Feeds, 0)
+		}
+		res[*feed.Category] = append(res[*feed.Category], &feed)
+	}
+
+	return res, nil
+} // end LeftMenuFeedsSummary
+
 // FeedByID returns a feed by the ID.
 func (s *Storage) FeedByID(userID, feedID int64) (*model.Feed, error) {
 	var feed model.Feed

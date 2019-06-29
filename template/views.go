@@ -1103,19 +1103,28 @@ var templateViewsMap = map[string]string{
 
 {{ define "content"}}
 
-        {{ range .feeds }}
-        <article class="menu_item">
-            <div class="title">
-                {{ if .Icon }}
-                    <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
-                {{ end }}
-                <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
-            </div>
-        </article>
-        {{ end }}
-        <div class="breaker">
-
+        {{ range $category, $feeds := .feeds }}
+        <div class="menu_category">
+            <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
         </div>
+            {{ range $feeds }}
+            <article class="menu_item unread-counter-{{.Unread}}">
+                <div class="title">
+                    {{ if .Icon }}
+                        <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
+                    {{ end }}
+                    <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
+                </div>
+                <div class="menu_unread">
+                {{ if gt .Unread 0 }}
+                    ({{ .Unread }})
+                {{ end }}
+                </div>
+                <div class="breaker"></div>
+            </article>
+            {{ end }}
+        {{ end }}
+        <div class="breaker"></div>
 {{ end }}
 
 `,
@@ -1456,7 +1465,7 @@ var templateViewsMapChecksums = map[string]string{
 	"history_entries":     "b65ca1d85615caa7c314a33f1cb997aa3477a79e66b9894b2fd387271ad467d2",
 	"import":              "8349e47a783bb40d8e9248b4771656e5f006185e11079e1c4680dd52633420ed",
 	"integrations":        "f85b4a48ab1fc13b8ca94bfbbc44bd5e8784f35b26a63ec32cbe82b96b45e008",
-	"left_menu":           "a9c597528cda780fa4e6b8e6f5d7c7311407760ca6a6169f6bbdf32b2e83aa46",
+	"left_menu":           "a1d05c84621ae02262362079ec70d3e1a63444fb8a0023b95b7162e4fcc53664",
 	"login":               "2e72d2d4b9786641b696bedbed5e10b04bdfd68254ddbbdb0a53cca621d200c7",
 	"search_entries":      "d71849a4f2b0573c7c76ad0ea941812009e9f022de60895987a781d3e6f08a01",
 	"sessions":            "1b3ec0970a4111b81f86d6ed187bb410f88972e2ede6723b9febcc4c7e5fc921",

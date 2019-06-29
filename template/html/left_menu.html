@@ -2,18 +2,27 @@
 
 {{ define "content"}}
 
-        {{ range .feeds }}
-        <article class="menu_item">
-            <div class="title">
-                {{ if .Icon }}
-                    <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
-                {{ end }}
-                <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
-            </div>
-        </article>
-        {{ end }}
-        <div class="breaker">
-
+        {{ range $category, $feeds := .feeds }}
+        <div class="menu_category">
+            <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
         </div>
+            {{ range $feeds }}
+            <article class="menu_item unread-counter-{{.Unread}}">
+                <div class="title">
+                    {{ if .Icon }}
+                        <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
+                    {{ end }}
+                    <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
+                </div>
+                <div class="menu_unread">
+                {{ if gt .Unread 0 }}
+                    ({{ .Unread }})
+                {{ end }}
+                </div>
+                <div class="breaker"></div>
+            </article>
+            {{ end }}
+        {{ end }}
+        <div class="breaker"></div>
 {{ end }}
 

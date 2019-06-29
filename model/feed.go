@@ -40,6 +40,7 @@ type Feed struct {
 	Icon               *FeedIcon `json:"icon"`
 	UnreadCount        int       `json:"-"`
 	ReadCount          int       `json:"-"`
+	Unread			   int       `json:"unread"`
 }
 
 // List of supported schedulers.
