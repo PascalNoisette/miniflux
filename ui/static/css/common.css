@@ -293,21 +293,24 @@ left_menu {
         float: left;
         margin-right:10px;
         margin-bottom: 10px;
-
+        padding-top: 10px;
     }
-    left_menu .item-meta, left_menu .page-header, left_menu .category {
-        display: none;
+    left_menu .menu_item{
+        max-width: 240px;
+        padding-left: 1em;
+        padding-bottom: 1em;
     }
-    left_menu .item-header{
+    left_menu .menu_item .title{
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
     }
-    left_menu article.item{
-        margin-bottom: 1px;
+    left_menu .menu_item a{
+        text-decoration: none;
     }
-    left_menu .alert{
-        display: none;
+    left_menu + main{
+        float:left;
+        width: 475px;
     }
 }
 

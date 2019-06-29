@@ -13,14 +13,14 @@ import (
 	"miniflux.app/ui/view"
 )
 
-func (h *handler) showFeedsPage(w http.ResponseWriter, r *http.Request) {
+func (h *handler) showLeftMenu(w http.ResponseWriter, r *http.Request) {
 	user, err := h.store.UserByID(request.UserID(r))
 	if err != nil {
 		html.ServerError(w, r, err)
 		return
 	}
 
-	feeds, err := h.store.FeedsWithCounters(user.ID)
+	feeds, err := h.store.Feeds(user.ID)
 	if err != nil {
 		html.ServerError(w, r, err)
 		return
@@ -34,6 +34,6 @@ func (h *handler) showFeedsPage(w http.ResponseWriter, r *http.Request) {
 	view.Set("user", user)
 	view.Set("countUnread", h.store.CountUnreadEntries(user.ID))
 	view.Set("countErrorFeeds", h.store.CountErrorFeeds(user.ID))
-
-	html.OK(w, r, view.Render("feeds"))
+	view.Set("base", "ajax")
+	html.OK(w, r, view.Render("left_menu"))
 }

@@ -1,0 +1,16 @@
+{{ define "title"}}{{ t "page.feeds.title" }} ({{ .total }}){{ end }}
+
+{{ define "content"}}
+
+        {{ range .feeds }}
+        <article class="menu_item">
+            <div class="title">
+                {{ if .Icon }}
+                    <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
+                {{ end }}
+                <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
+            </div>
+        </article>
+        {{ end }}
+{{ end }}
+
