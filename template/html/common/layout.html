@@ -45,7 +45,9 @@
 <body
     data-entries-status-url="{{ route "updateEntriesStatus" }}"
     data-refresh-all-feeds-url="{{ route "refreshAllFeeds" }}"
-    {{ if .user }}{{ if not .user.KeyboardShortcuts }}data-disable-keyboard-shortcuts="true"{{ end }}{{ end }}>
+    {{ if .user }}{{ if not .user.KeyboardShortcuts }}data-disable-keyboard-shortcuts="true"{{ end }}{{ end }}
+    {{ if .user }}{{ if     .user.AutoMarkAsRead }}   data-auto-mark-as-read="true"         {{ end }}{{ end }}
+    >
     <div class="toast-wrap">
         <span class="toast-msg"></span>
     </div>

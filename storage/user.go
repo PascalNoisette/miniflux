@@ -65,7 +65,7 @@ func (s *Storage) CreateUser(user *model.User) (err error) {
 		VALUES
 			(LOWER($1), $2, $3, $4)
 		RETURNING
-			id, username, is_admin, language, theme, timezone, entry_direction, entries_per_page, keyboard_shortcuts, show_reading_time
+			id, username, is_admin, language, theme, timezone, entry_direction, entries_per_page, keyboard_shortcuts, show_reading_time, auto_mark_as_read
 	`
 
 	err = s.db.QueryRow(query, user.Username, password, user.IsAdmin, extra).Scan(
@@ -79,6 +79,7 @@ func (s *Storage) CreateUser(user *model.User) (err error) {
 		&user.EntriesPerPage,
 		&user.KeyboardShortcuts,
 		&user.ShowReadingTime,
+		&user.AutoMarkAsRead,
 	)
 	if err != nil {
 		return fmt.Errorf(`store: unable to create user: %v`, err)
@@ -128,24 +129,25 @@ func (s *Storage) UpdateUser(user *model.User) error {
 				entry_direction=$7,
 				entries_per_page=$8,
 				keyboard_shortcuts=$9,
-				show_reading_time=$10
+				show_reading_time=$10,
+				auto_mark_as_read=$11
 			WHERE
-				id=$11
+				id=$12
 		`
-
 		_, err = s.db.Exec(
 			query,
-			user.Username,
-			hashedPassword,
-			user.IsAdmin,
-			user.Theme,
-			user.Language,
-			user.Timezone,
-			user.EntryDirection,
-			user.EntriesPerPage,
-			user.KeyboardShortcuts,
-			user.ShowReadingTime,
-			user.ID,
+			user.Username,//$1
+			hashedPassword,//$2
+			user.IsAdmin,//$3
+			user.Theme,//$4
+			user.Language,//$5
+			user.Timezone,//$6
+			user.EntryDirection,//$7
+			user.EntriesPerPage,//$8
+			user.KeyboardShortcuts,//$9
+			user.ShowReadingTime,//$10
+			user.AutoMarkAsRead,//$11
+			user.ID,//$12
 		)
 		if err != nil {
 			return fmt.Errorf(`store: unable to update user: %v`, err)
@@ -161,23 +163,24 @@ func (s *Storage) UpdateUser(user *model.User) error {
 				entry_direction=$6,
 				entries_per_page=$7,
 				keyboard_shortcuts=$8,
-				show_reading_time=$9
+				show_reading_time=$9,
+				auto_mark_as_read=$10
 			WHERE
-				id=$10
+				id=$11
 		`
-
 		_, err := s.db.Exec(
 			query,
 			user.Username,
 			user.IsAdmin,
 			user.Theme,
 			user.Language,
-			user.Timezone,
-			user.EntryDirection,
-			user.EntriesPerPage,
-			user.KeyboardShortcuts,
-			user.ShowReadingTime,
-			user.ID,
+			user.Timezone,//$5
+			user.EntryDirection,//$6
+			user.EntriesPerPage,//$7
+			user.KeyboardShortcuts,//$8
+			user.ShowReadingTime,//$9
+			user.AutoMarkAsRead,//$10
+			user.ID,//$11
 		)
 
 		if err != nil {
@@ -216,6 +219,7 @@ func (s *Storage) UserByID(userID int64) (*model.User, error) {
 			entries_per_page,
 			keyboard_shortcuts,
 			show_reading_time,
+			auto_mark_as_read,
 			last_login_at,
 			extra
 		FROM
@@ -240,6 +244,7 @@ func (s *Storage) UserByUsername(username string) (*model.User, error) {
 			entries_per_page,
 			keyboard_shortcuts,
 			show_reading_time,
+			auto_mark_as_read,
 			last_login_at,
 			extra
 		FROM
@@ -264,6 +269,7 @@ func (s *Storage) UserByExtraField(field, value string) (*model.User, error) {
 			entries_per_page,
 			keyboard_shortcuts,
 			show_reading_time,
+			auto_mark_as_read,
 			last_login_at,
 			extra
 		FROM
@@ -315,6 +321,7 @@ func (s *Storage) fetchUser(query string, args ...interface{}) (*model.User, err
 		&user.EntriesPerPage,
 		&user.KeyboardShortcuts,
 		&user.ShowReadingTime,
+		&user.AutoMarkAsRead,
 		&user.LastLoginAt,
 		&extra,
 	)
@@ -381,6 +388,7 @@ func (s *Storage) Users() (model.Users, error) {
 			entries_per_page,
 			keyboard_shortcuts,
 			show_reading_time,
+			auto_mark_as_read,
 			last_login_at,
 			extra
 		FROM
@@ -408,6 +416,7 @@ func (s *Storage) Users() (model.Users, error) {
 			&user.EntriesPerPage,
 			&user.KeyboardShortcuts,
 			&user.ShowReadingTime,
+			&user.AutoMarkAsRead,
 			&user.LastLoginAt,
 			&extra,
 		)
