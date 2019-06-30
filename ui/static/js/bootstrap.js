@@ -49,7 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
     new AppearHandler(
         ".item-status-unread",
         {
-            "onappear" : function(e){
+            "onappear" : function(element){
+                if (document.querySelector("body[data-entry-embedded=true]")) {
+                    ArticleHandler.load(element);
+                }
             },
             "ondisappear" : function(element) {
                 if (! document.querySelector("body[data-auto-mark-as-read=true]")) {
