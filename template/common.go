@@ -3,10 +3,6 @@
 package template // import "miniflux.app/template"
 
 var templateCommonMap = map[string]string{
-	"ajax": `{{ define "ajax" }}
-        {{template "content" .}}
-{{ end }}
-`,
 	"entry_pagination": `{{ define "entry_pagination" }}
 <div class="pagination">
     <div class="pagination-prev">
@@ -74,6 +70,7 @@ var templateCommonMap = map[string]string{
                 >{{ if eq .entry.Status "read" }}✘&nbsp;{{ t "entry.status.unread" }}{{ else }}✔&#xfe0e;&nbsp;{{ t "entry.status.read" }}{{ end }}</a>
         </li>
     </ul>
+    <a class="article_view_url" href="{{ route "fetchContent" "entryID" .entry.ID }}" style="display:none"></a>
 </div>
 {{ end }}`,
 	"layout": `{{ define "base" }}
@@ -122,9 +119,6 @@ var templateCommonMap = map[string]string{
     {{ if .user }}
     <header class="header">
         <nav>
-            <div class="show_menu">
-                <a href="#">&#9776;</a>
-            </div>
             <div class="logo">
                 <a href="{{ route "unread" }}">Mini<span>flux</span></a>
             </div>
@@ -176,9 +170,6 @@ var templateCommonMap = map[string]string{
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
-    <left_menu>
-        {{ template "left_menu" .}}
-    </left_menu>
     <main>
         {{template "content" .}}
     </main>
@@ -232,13 +223,6 @@ var templateCommonMap = map[string]string{
 </html>
 {{ end }}
 `,
-	"left_menu": `{{ define "left_menu"}}
-    {{ if .user }}
-        <div class="left_menu" style="display: none;">
-            <a href="{{ route "leftMenu" }}" ></a>
-        </div>
-    {{ end }}
-{{ end }}`,
 	"pagination": `{{ define "pagination" }}
 <div class="pagination">
     <div class="pagination-prev">
@@ -262,10 +246,8 @@ var templateCommonMap = map[string]string{
 }
 
 var templateCommonMapChecksums = map[string]string{
-	"ajax":             "1439fe04aa8da9a1b9f936bfbca8d8c71427e52bd01bb16a173d3e851e8fd499",
 	"entry_pagination": "4faa91e2eae150c5e4eab4d258e039dfdd413bab7602f0009360e6d52898e353",
-	"item_meta":        "34deb081a054f2948ad808bdb2c8603d6ab00c58f2f50c4ead0b47ae092888eb",
-	"layout":           "680ee1c9f404ad71bd5b4474296bd9f301cbaddd4ba0c451a0cea9e1de0d49e7",
-	"left_menu":        "04106e377cf0df68d0f7a4c1cc8906950f4c7bafc02440805f007c30f43531d5",
+	"item_meta":        "0659868e5ca0d564610cbfbc1a3856f5f3a630536eb11f4889ff659665c2ec55",
+	"layout":           "cc9ae6a3c430a6be67787318292e1bcec7bf27e96a4f6664dcebc5d19419cfba",
 	"pagination":       "3386e90c6e1230311459e9a484629bc5d5bf39514a75ef2e73bbbc61142f7abb",
 }

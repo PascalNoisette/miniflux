@@ -17,7 +17,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/css"
 	"github.com/tdewolff/minify/v2/js"
 )
@@ -195,6 +194,7 @@ func main() {
 			"ui/static/js/nav_handler.js",
 			"ui/static/js/link_state_handler.js",
 			"ui/static/js/left_menu.js",
+			"ui/static/js/article_view.js",
 			"ui/static/js/bootstrap.js",
 		},
 		"sw": []string{
