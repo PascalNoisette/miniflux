@@ -14,8 +14,10 @@ class LeftMenu {
         let menu = document.querySelector(".left_menu");
         if ( menu.style.width == 0 || menu.style.width == "0px") {
             menu.style.width = "inherit";
+            document.querySelector('main').addEventListener('click', LeftMenu.toggle, false);
         } else {
             menu.style.width = "0px";
+            document.querySelector('main').removeEventListener('click', LeftMenu.toggle, false);
         }
     }
 }
