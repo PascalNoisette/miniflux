@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     LeftMenu.load()
+    mouseHandler.onClick(".show_menu", () => LeftMenu.toggle());
 
     if ("serviceWorker" in navigator) {
         let scriptElement = document.getElementById("service-worker-script");

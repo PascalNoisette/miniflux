@@ -296,7 +296,7 @@ left_menu {
     bottom: 0px;
     top:0px;
     margin-top:4em;
-    width: 0;/*hidden by default*/
+    width: 0px;/*hidden by default */
 }
 .spacer{
     display: block;
@@ -335,12 +335,20 @@ left_menu .menu_unread{
     display: block;
     clear: both;
 }
+.show_menu{
+    float: left;
+    margin-right: 15px;
+    margin-left: 5px;
+}
 @media (min-width: 1024px) {
     body {
         max-width: 1024px;
     }
+    .show_menu{
+        display: none;
+    }
     .left_menu{
-        width: inherit;
+        width: inherit!important;/*resistance to LeftMenu.toggle */
     }
     left_menu + main{
         width: 75%;

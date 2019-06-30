@@ -10,4 +10,12 @@ class LeftMenu {
         });
         request.execute();
     }
+    static toggle() {
+        let menu = document.querySelector(".left_menu");
+        if ( menu.style.width == 0 || menu.style.width == "0px") {
+            menu.style.width = "inherit";
+        } else {
+            menu.style.width = "0px";
+        }
+    }
 }
