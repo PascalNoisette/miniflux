@@ -114,6 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
     mouseHandler.onClick(".show_menu", () => LeftMenu.toggle());
     ArticleHandler.load();
 
+    if (document.querySelector("body[data-entry-embedded=true]")) {
+        ArticleHandler.load();
+    }
+
     if ("serviceWorker" in navigator) {
         let scriptElement = document.getElementById("service-worker-script");
         if (scriptElement) {

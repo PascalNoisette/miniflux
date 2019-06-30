@@ -37,6 +37,7 @@ func (h *handler) showSettingsPage(w http.ResponseWriter, r *http.Request) {
 		ShowReadingTime:   user.ShowReadingTime,
 		CustomCSS:         user.Extra["custom_css"],
 		AutoMarkAsRead:    user.AutoMarkAsRead,
+		EntryEmbedded:     user.EntryEmbedded,
 	}
 
 	timezones, err := h.store.Timezones()
