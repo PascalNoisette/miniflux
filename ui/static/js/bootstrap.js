@@ -112,6 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
         onClick(".header nav li", (event) => onClickMainMenuListItem(event));
     }
 
+    mouseHandler.onClick(".toggle-entry-embedded", (event) => {
+        if (document.querySelector("body").dataset.entryEmbedded == "true") {
+            document.querySelector("body").dataset.entryEmbedded = "false";
+            event.target.innerText = "off";
+        } else if (document.querySelector("body").dataset.entryEmbedded == "false") {
+            document.querySelector("body").dataset.entryEmbedded = "true";
+            event.target.innerText = "on";
+        }
+        return false;
+    });
 
     LeftMenu.load()
     mouseHandler.onClick(".show_menu", () => LeftMenu.toggle());

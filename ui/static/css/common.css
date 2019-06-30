@@ -1121,7 +1121,9 @@ details.entry-enclosures {
     }
 }
 
-
+body[data-entry-embedded="false"] .entry-content{
+    display: none;
+}
 
 /* Bookmarlet */
 .bookmarklet {
