@@ -213,6 +213,11 @@ a:hover {
     100% {visibility: hidden; opacity: 0; z-index: 0}
 }
 
+
+.show_menu{
+    display: none;
+}
+
 @media (min-width: 600px) {
     body {
         margin: auto;
@@ -275,6 +280,9 @@ a:hover {
     }
 
     .search-form.has-search-query {
+        display: block;
+    }
+    .show_menu{
         display: block;
     }
 }
