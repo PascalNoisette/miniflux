@@ -280,61 +280,67 @@ a:hover {
 }
 
 
-/* left menu for big screen */
+/* left menu */
 left_menu {
-    display: none;
+    display: block;
+    overflow: auto;
+    margin-right:1%;
+    font-size: 80%;
+
+}
+.left_menu{
+    overflow: auto;
+    height: 100%;
+    position: fixed;
+    background-color: #f1f1f1;
+    bottom: 0px;
+    top:0px;
+    margin-top:4em;
+    width: 0;/*hidden by default*/
+}
+.spacer{
+    display: block;
+    height: 4em;
+}
+left_menu .menu_category{
+    padding-left: 1em;
+    padding-top: 1em;
+}
+left_menu .menu_category a{
+    text-decoration: none;
+    color: black;
+}
+left_menu .menu_item{
+    padding-left: 1em;
+    padding-bottom: 5px;
+}
+left_menu .menu_item .title{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80%;
+    float: left;
+}
+left_menu .menu_item a{
+    text-decoration: none;
+}
+left_menu .unread-counter-0 a{
+    color:gray;
+}
+left_menu .menu_unread{
+    vertical-align: sub;
+    display: inline;
+}
+.breaker {
+    display: block;
+    clear: both;
 }
 @media (min-width: 1024px) {
     body {
         max-width: 1024px;
     }
-    left_menu {
-        display: block;
-        overflow: auto;
-        margin-right:1%;
-        font-size: 80%;
-    }
     .left_menu{
-        overflow: auto;
-        height: 100%;
-        position: fixed;
-        background-color: #f1f1f1;
-        bottom: 0px;
-        top:0px;
-        margin-top:4em;
-    }
-    .spacer{
-        display: block;
-        height: 4em;
-    }
-    left_menu .menu_category{
-        padding-left: 1em;
-        padding-top: 1em;
-    }
-    left_menu .menu_category a{
-        text-decoration: none;
-        color: black;
-    }
-    left_menu .menu_item{
-        padding-left: 1em;
-        padding-bottom: 5px;
-    }
-    left_menu .menu_item .title{
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 80%;
-        float: left;
-    }
-    left_menu .menu_item a{
-        text-decoration: none;
-    }
-    left_menu .unread-counter-0 a{
-        color:gray;
-    }
-    left_menu .menu_unread{
-        vertical-align: sub;
-        display: inline;
+        width: inherit;
     }
     left_menu + main{
         width: 75%;
