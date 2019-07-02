@@ -59,7 +59,9 @@ a:hover {
 .header nav ul {
     display: none;
 }
-
+.menu_category{
+    display: none;
+}
 .header li {
     cursor: pointer;
     padding-left: 10px;
@@ -132,6 +134,7 @@ a:hover {
 .logo {
     cursor: pointer;
     text-align: center;
+    margin-left: 50px;
 }
 
 .logo a {
@@ -214,8 +217,15 @@ a:hover {
 }
 
 
-.show_menu{
+
+/* left menu */
+left_menu {
     display: none;
+}
+.show_menu{
+    float: left;
+    margin-right: 15px;
+    margin-left: 5px;
 }
 
 @media (min-width: 600px) {
@@ -238,6 +248,11 @@ a:hover {
     .header nav ul {
         display: block;
     }
+
+    .header li.menu_category, .header li.menu_item{
+        display: block;
+    }
+
 
     .header li {
         display: inline;
@@ -282,89 +297,72 @@ a:hover {
     .search-form.has-search-query {
         display: block;
     }
-    .show_menu{
-        display: block;
-    }
-}
-
-
-/* left menu */
-left_menu {
-    display: block;
-    overflow: auto;
-    margin-right:1%;
-    font-size: 80%;
-
-}
-.left_menu{
-    overflow: auto;
-    height: 100%;
-    position: fixed;
-    background-color: #f1f1f1;
-    bottom: 0px;
-    top:0px;
-    margin-top:4em;
-    width: 0px;/*hidden by default */
-}
-.spacer{
-    display: block;
-    height: 4em;
-}
-left_menu .menu_category{
-    padding-left: 1em;
-    padding-top: 1em;
-}
-left_menu .menu_category a{
-    text-decoration: none;
-    color: black;
-}
-left_menu .menu_item{
-    padding-left: 1em;
-    padding-bottom: 5px;
-}
-left_menu .menu_item .title{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 80%;
-    float: left;
-}
-left_menu .menu_item a{
-    text-decoration: none;
-}
-left_menu .unread-counter-0 a{
-    color:gray;
-}
-left_menu .menu_unread{
-    vertical-align: sub;
-    display: inline;
-}
-.breaker {
-    display: block;
-    clear: both;
-}
-.show_menu{
-    float: left;
-    margin-right: 15px;
-    margin-left: 5px;
-}
-@media (min-width: 1024px) {
-    body {
-        max-width: 1024px;
-    }
-    .show_menu{
-        display: none;
+    left_menu {
+        overflow: auto;
+        margin-right:1%;
+        font-size: 80%;
     }
     .left_menu{
-        width: inherit!important;/*resistance to LeftMenu.toggle */
+        overflow: auto;
+        height: 100%;
+        position: absolute;
+        background-color: #f1f1f1;
+        bottom: 0px;
+        top:0px;
+        margin-top:4em;
+        width: 255px;/*hidden by default */
     }
-    left_menu + main{
-        width: 75%;
-        margin-left: 30%;
+    .spacer{
+        display: block;
+        height: 4em;
     }
+    left_menu .menu_category{
+        padding-left: 1em;
+        padding-top: 1em;
+    }
+    left_menu .menu_category a{
+        text-decoration: none;
+        color: black;
+    }
+    left_menu .menu_item{
+        padding-left: 1em;
+        padding-bottom: 5px;
+    }
+    left_menu .menu_item .title{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 80%;
+        float: left;
+    }
+    left_menu .menu_item a{
+        text-decoration: none;
+    }
+    left_menu .unread-counter-0 a{
+        color:gray;
+    }
+    left_menu .menu_unread{
+        vertical-align: sub;
+        display: inline;
+    }
+    .header li{
+        padding-right: 0;
+    }
+    .left_menu_main{
+        margin-left: 260px;
+    }
+
     .breaker {
         display: block;
         clear: both;
+    }
+}
+
+
+/* new break point */
+@media (min-width: 1024px) {
+    body {
+        max-width: 1024px;
     }
 }
 

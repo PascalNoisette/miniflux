@@ -5,19 +5,21 @@ class LeftMenu {
         request.options.method = "GET"
         request.withCallback(function (data){
             data.text().then(function (text) {
-                document.getElementsByClassName("left_menu")[0].innerHTML = text
+                document.getElementsByClassName("left_menu")[0].innerHTML = text;
             });
         });
         request.execute();
     }
     static toggle() {
-        let menu = document.querySelector(".left_menu");
-        if ( menu.style.width == 0 || menu.style.width == "0px") {
-            menu.style.width = "inherit";
-            document.querySelector('main').addEventListener('click', LeftMenu.toggle, false);
+        let menu = document.querySelector("left_menu");
+        let main = document.querySelector('main');
+        main.classList.toggle("left_menu_main");
+        if (!DomHelper.isVisible(menu)) {
+            menu.style.display = "block";
+            main.addEventListener('click', LeftMenu.toggle, false);
         } else {
-            menu.style.width = "0px";
-            document.querySelector('main').removeEventListener('click', LeftMenu.toggle, false);
+            menu.style.display = "none";
+            main.removeEventListener('click', LeftMenu.toggle, false);
         }
     }
 }

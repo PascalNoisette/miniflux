@@ -1,28 +1,30 @@
 {{ define "title"}}{{ t "page.feeds.title" }} ({{ .total }}){{ end }}
 
 {{ define "content"}}
-
+        <div class="header dummy">
+    <ul>
         {{ range $category, $feeds := .feeds }}
-        <div class="menu_category">
+        <li class="menu_category">
             <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
-        </div>
+        </li>
             {{ range $feeds }}
-            <article class="menu_item unread-counter-{{.Unread}}">
-                <div class="title">
+            <li class="menu_item unread-counter-{{.Unread}}">
+                <span class="title">
                     {{ if .Icon }}
                         <img src="{{ route "icon" "iconID" .Icon.IconID }}" width="16" height="16" alt="{{ .Title }}" />
                     {{ end }}
                     <a href="{{ route "feedEntries" "feedID" .ID }}">{{ .Title }}</a>
-                </div>
-                <div class="menu_unread">
+                </span>
+                <span class="menu_unread">
                 {{ if gt .Unread 0 }}
                     ({{ .Unread }})
                 {{ end }}
-                </div>
-                <div class="breaker"></div>
-            </article>
+                </span>
+            </li>
             {{ end }}
         {{ end }}
+    </ul>
+        </div>
         <div class="breaker"></div>
         <div class="spacer"></div>
 {{ end }}
