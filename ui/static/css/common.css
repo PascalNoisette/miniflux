@@ -246,7 +246,7 @@ left_menu {
     }
 
     .header nav ul {
-        display: block;
+        display: block !important;
     }
 
     .header li.menu_category, .header li.menu_item{
@@ -345,7 +345,7 @@ left_menu {
         vertical-align: sub;
         display: inline;
     }
-    .header li{
+    left_menu .header li{
         padding-right: 0;
     }
     .left_menu_main{
