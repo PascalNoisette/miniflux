@@ -26,6 +26,7 @@ type User struct {
 	ShowReadingTime	  bool              `json:"show_reading_time"`
 	AutoMarkAsRead    bool              `json:"auto_mark_as_read"`
 	EntryEmbedded     bool              `json:"entry_embedded"`
+	LeftMenuState     bool              `json:"left_menu_state"`
 	LastLoginAt       *time.Time        `json:"last_login_at,omitempty"`
 	Extra             map[string]string `json:"extra"`
 }

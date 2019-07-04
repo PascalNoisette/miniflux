@@ -65,7 +65,8 @@ func (s *Storage) CreateUser(user *model.User) (err error) {
 		VALUES
 			(LOWER($1), $2, $3, $4)
 		RETURNING
-			id, username, is_admin, language, theme, timezone, entry_direction, entries_per_page, keyboard_shortcuts, show_reading_time, auto_mark_as_read, entry_embedded
+			id, username, is_admin, language, theme, timezone, entry_direction, entries_per_page, keyboard_shortcuts, show_reading_time, auto_mark_as_read, entry_embedded, left_menu_state
+
 	`
 
 	err = s.db.QueryRow(query, user.Username, password, user.IsAdmin, extra).Scan(
@@ -81,6 +82,7 @@ func (s *Storage) CreateUser(user *model.User) (err error) {
 		&user.ShowReadingTime,
 		&user.AutoMarkAsRead,
 		&user.EntryEmbedded,
+		&user.LeftMenuState,
 	)
 	if err != nil {
 		return fmt.Errorf(`store: unable to create user: %v`, err)
@@ -132,9 +134,10 @@ func (s *Storage) UpdateUser(user *model.User) error {
 				keyboard_shortcuts=$9,
 				show_reading_time=$10,
 				auto_mark_as_read=$11,
-				entry_embedded=$12
+				entry_embedded=$12,
+				left_menu_state=$13
 			WHERE
-				id=$13
+				id=$14
 		`
 		_, err = s.db.Exec(
 			query,
@@ -150,6 +153,7 @@ func (s *Storage) UpdateUser(user *model.User) error {
 			user.ShowReadingTime,//$10
 			user.AutoMarkAsRead,
 			user.EntryEmbedded,
+			user.LeftMenuState,
 			user.ID,
 		)
 		if err != nil {
@@ -168,9 +172,10 @@ func (s *Storage) UpdateUser(user *model.User) error {
 				keyboard_shortcuts=$8,
 				show_reading_time=$9,
 				auto_mark_as_read=$10,
-				entry_embedded=$11
+				entry_embedded=$11,
+				left_menu_state=$12
 			WHERE
-				id=$12
+				id=$13
 		`
 		_, err := s.db.Exec(
 			query,
@@ -185,6 +190,7 @@ func (s *Storage) UpdateUser(user *model.User) error {
 			user.ShowReadingTime,//$9
 			user.AutoMarkAsRead,//$10
 			user.EntryEmbedded,
+			user.LeftMenuState,
 			user.ID,
 		)
 
@@ -226,6 +232,7 @@ func (s *Storage) UserByID(userID int64) (*model.User, error) {
 			show_reading_time,
 			auto_mark_as_read,
 			entry_embedded,
+			left_menu_state,
 			last_login_at,
 			extra
 		FROM
@@ -252,6 +259,7 @@ func (s *Storage) UserByUsername(username string) (*model.User, error) {
 			show_reading_time,
 			auto_mark_as_read,
 			entry_embedded,
+			left_menu_state,
 			last_login_at,
 			extra
 		FROM
@@ -278,6 +286,7 @@ func (s *Storage) UserByExtraField(field, value string) (*model.User, error) {
 			show_reading_time,
 			auto_mark_as_read,
 			entry_embedded,
+			left_menu_state,
 			last_login_at,
 			extra
 		FROM
@@ -304,6 +313,7 @@ func (s *Storage) UserByAPIKey(token string) (*model.User, error) {
 			u.show_reading_time,
 			u.auto_mark_as_read,
 			u.entry_embedded,
+			u.left_menu_state,
 			u.last_login_at,
 			u.extra
 		FROM
@@ -333,6 +343,7 @@ func (s *Storage) fetchUser(query string, args ...interface{}) (*model.User, err
 		&user.ShowReadingTime,
 		&user.AutoMarkAsRead,
 		&user.EntryEmbedded,
+		&user.LeftMenuState,
 		&user.LastLoginAt,
 		&extra,
 	)
@@ -401,6 +412,7 @@ func (s *Storage) Users() (model.Users, error) {
 			show_reading_time,
 			auto_mark_as_read,
 			entry_embedded,
+			left_menu_state,
 			last_login_at,
 			extra
 		FROM
@@ -430,6 +442,7 @@ func (s *Storage) Users() (model.Users, error) {
 			&user.ShowReadingTime,
 			&user.AutoMarkAsRead,
 			&user.EntryEmbedded,
+			&user.LeftMenuState,
 			&user.LastLoginAt,
 			&extra,
 		)

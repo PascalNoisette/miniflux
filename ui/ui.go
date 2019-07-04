@@ -61,6 +61,8 @@ func Serve(router *mux.Router, store *storage.Storage, pool *worker.Pool, feedHa
 	uiRouter.HandleFunc("/feeds/refresh", handler.refreshAllFeeds).Name("refreshAllFeeds").Methods(http.MethodGet)
 
 	uiRouter.HandleFunc("/menu/left", handler.showLeftMenu).Name("leftMenu").Methods(http.MethodGet)
+	uiRouter.HandleFunc("/menu/left/set", handler.setLeftMenuStatus).Name("setLeftMenuStatus").Methods(http.MethodPost)
+	uiRouter.HandleFunc("/feeds/refresh", handler.refreshAllFeeds).Name("refreshAllFeeds").Methods(http.MethodGet)
 
 	// Individual feed pages.
 	uiRouter.HandleFunc("/feed/{feedID}/refresh", handler.refreshFeed).Name("refreshFeed").Methods(http.MethodGet)

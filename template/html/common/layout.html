@@ -48,6 +48,7 @@
     {{ if .user }}{{ if not .user.KeyboardShortcuts }}data-disable-keyboard-shortcuts="true"{{ end }}{{ end }}
     {{ if .user }}{{ if     .user.AutoMarkAsRead }}   data-auto-mark-as-read="true"         {{ end }}{{ end }}
     {{ if .user }}{{ if     .user.EntryEmbedded }}    data-entry-embedded="true"         {{ end }}{{ end }}
+    {{ if .user }}                                    data-left-menu-state="{{ .user.LeftMenuState }}" {{ end }}
     >
     <div class="toast-wrap">
         <span class="toast-msg"></span>
@@ -109,7 +110,7 @@
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
-    <left_menu>
+    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" >
         {{ template "left_menu" .}}
     </left_menu>
     <main>

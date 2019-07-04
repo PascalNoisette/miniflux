@@ -3,6 +3,10 @@
 package template // import "miniflux.app/template"
 
 var templateCommonMap = map[string]string{
+	"ajax": `{{ define "ajax" }}
+        {{template "content" .}}
+{{ end }}
+`,
 	"entry_pagination": `{{ define "entry_pagination" }}
 <div class="pagination">
     <div class="pagination-prev">
@@ -118,10 +122,14 @@ var templateCommonMap = map[string]string{
     {{ if .user }}{{ if not .user.KeyboardShortcuts }}data-disable-keyboard-shortcuts="true"{{ end }}{{ end }}
     {{ if .user }}{{ if     .user.AutoMarkAsRead }}   data-auto-mark-as-read="true"         {{ end }}{{ end }}
     {{ if .user }}{{ if     .user.EntryEmbedded }}    data-entry-embedded="true"         {{ end }}{{ end }}
+    {{ if .user }}                                    data-left-menu-state="{{ .user.LeftMenuState }}" {{ end }}
     >
     {{ if .user }}
     <header class="header">
         <nav>
+            <div class="show_menu">
+                <a href="#">&#9776;</a>
+            </div>
             <div class="logo">
                 <a href="{{ route "unread" }}">Mini<span>flux</span></a>
             </div>
@@ -173,6 +181,9 @@ var templateCommonMap = map[string]string{
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
+    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" >
+        {{ template "left_menu" .}}
+    </left_menu>
     <main>
         {{template "content" .}}
     </main>
@@ -226,6 +237,13 @@ var templateCommonMap = map[string]string{
 </html>
 {{ end }}
 `,
+	"left_menu": `{{ define "left_menu"}}
+    {{ if .user }}
+        <div class="left_menu">
+            <a href="{{ route "leftMenu" }}" ></a>
+        </div>
+    {{ end }}
+{{ end }}`,
 	"pagination": `{{ define "pagination" }}
 <div class="pagination">
     <div class="pagination-prev">
@@ -266,9 +284,11 @@ var templateCommonMap = map[string]string{
 }
 
 var templateCommonMapChecksums = map[string]string{
+	"ajax":              "1439fe04aa8da9a1b9f936bfbca8d8c71427e52bd01bb16a173d3e851e8fd499",
 	"entry_pagination":  "4faa91e2eae150c5e4eab4d258e039dfdd413bab7602f0009360e6d52898e353",
 	"item_meta":         "0659868e5ca0d564610cbfbc1a3856f5f3a630536eb11f4889ff659665c2ec55",
-	"layout":            "a1af576c213d5bee46cb63c6a35a5aa582594812333d7899bb1c09930e504365",
+	"layout":            "334d953c419afe77c600ef048c08b036f1d3b83395894be153d0bab36c865831",
+	"left_menu":         "fcb504e3a24ffcdc56fb0c56c02910830d595bc137156047220e9b8d5a49a762",
 	"pagination":        "3386e90c6e1230311459e9a484629bc5d5bf39514a75ef2e73bbbc61142f7abb",
 	"settings_reminder": "94046496260fbc8fae792b42d2462f53bad79f1bd010bcf4bc38f49ccfa4c48e",
 }
