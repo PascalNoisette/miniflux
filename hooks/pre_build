@@ -1,0 +1,4 @@
+#!/bin/bash
+sed -i "s|__BASEIMAGE_ARCH__|amd64|g" Dockerfile
+sed -i "s|__MINIFLUX_VERSION__|3.0|g" Dockerfile
+sed -i "s|__MINIFLUX_ARCH__|amd64|g" Dockerfile
