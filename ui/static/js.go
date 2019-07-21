@@ -101,7 +101,8 @@ class LinkStateHandler{static flip(element){let labelElement=document.createElem
 class LeftMenu{static load(){let link=document.querySelector(".left_menu a");let request=new RequestBuilder(link.href);request.options.method="GET"
 request.withCallback(function(data){data.text().then(function(text){document.getElementsByClassName("left_menu")[0].innerHTML=text;});if(document.querySelector("body").dataset.leftMenuState==="true"){LeftMenu.toggle();}});request.execute();}
 static toggle(){let menu=document.querySelector("left_menu");let main=document.querySelector('main');main.classList.toggle("left_menu_main");if(!DomHelper.isVisible(menu)){menu.style.display="block";new RequestBuilder(menu.dataset.url+"?status=1").execute();if(window.matchMedia("(max-width: 1024px)").matches){main.addEventListener('click',LeftMenu.toggle,false);}}else{menu.style.display="none";new RequestBuilder(menu.dataset.url+"?status=0").execute();main.removeEventListener('click',LeftMenu.toggle,false);}}}class ArticleHandler{static load(element){let elements=element.querySelectorAll(".article_view_url");elements.forEach((element)=>{let loadingElementWrapper=document.createElement("div");loadingElementWrapper.className="lds-dual-ring-wrapper";let loadingElement=document.createElement("div");loadingElement.className="lds-dual-ring";loadingElementWrapper.appendChild(loadingElement);element.parentNode.appendChild(loadingElementWrapper);let request=new RequestBuilder(element.href);request.withCallback((data)=>{data.json().then(function(json){let view=document.createElement("div");view.className="entry-content";view.innerHTML=json.content;loadingElementWrapper.remove();element.parentNode.appendChild(view);element.remove();});});request.execute();});}
-static swapTitleLinks(){document.querySelectorAll(".item-title a").forEach((element)=>{var tmpUrl=element.dataset.altUrl;element.dataset.altUrl=element.href;element.href=tmpUrl;});}}
+static swapTitleLinks(){document.querySelectorAll(".item-title a").forEach((element)=>{if(typeof(element.dataset.altUrl)=="undefined"){return;}
+var tmpUrl=element.dataset.altUrl;element.dataset.altUrl=element.href;element.href=tmpUrl;});}}
 class AppearHandler{constructor(selector="",opts={}){this.selectors=[];this.checkBinded=false;this.checkLock=false;this.defaults={interval:250,force_process:false};this.priorAppeared=[];if(selector!==""){this.addSelector(selector,opts);}
 this.startMonitorLoop();}
 process(){this.checkLock=false;function isVisible(element){return!!(element.offsetWidth||element.offsetHeight||element.getClientRects().length);}
@@ -130,6 +131,6 @@ return false;});if("serviceWorker"in navigator){let scriptElement=document.getEl
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "bc4129e937d7c6162094d8b1f328bb7e28dc3de1f4004d0c98717855ffc6edbe",
+	"app": "bff9b0a5505bfdbfd99055d601f97017716e8b9b91847084ae5577da266300a9",
 	"sw":  "55fffa223919cc18572788fb9c62fccf92166c0eb5d3a1d6f91c31f24d020be9",
 }

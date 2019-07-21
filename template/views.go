@@ -239,7 +239,7 @@ var templateViewsMap = map[string]string{
                     {{ if ne .Feed.Icon.IconID 0 }}
                         <img src="{{ route "icon" "iconID" .Feed.Icon.IconID }}" width="16" height="16" alt="{{ .Feed.Title }}">
                     {{ end }}
-                    <a href="{{ route "categoryEntry" "categoryID" .Feed.Category.ID "entryID" .ID }}">{{ .Title }}</a>
+                    <a href="{{ route "categoryEntry" "categoryID" .Feed.Category.ID "entryID" .ID }}" data-alt-url="{{ .URL }}">{{ .Title }}</a>
                 </span>
                 <span class="category"><a href="{{ route "categoryEntries" "categoryID" .Feed.Category.ID }}">{{ .Feed.Category.Title }}</a></span>
             </div>
@@ -1460,7 +1460,7 @@ var templateViewsMapChecksums = map[string]string{
 	"add_subscription":    "a0f1d2bc02b6adc83dbeae593f74d9b936102cd6dd73302cdbec2137cafdcdd9",
 	"bookmark_entries":    "b933e2c08cffdb5dec6a1a7db3ac0f9bd626628a6d22c38eea4a91cc134ea37d",
 	"categories":          "642ee3cddbd825ee6ab5a77caa0d371096b55de0f1bd4ae3055b8c8a70507d8d",
-	"category_entries":    "369cd77cc14d87b82a5065a9bfcfaa39f07b5481cb2635ba4dc0864c32cb12d2",
+	"category_entries":    "91e988518e492e13dd53a4303d6e4e5dc437c8a0a4876633b99610704db65078",
 	"choose_subscription": "33c04843d7c1b608d034e605e52681822fc6d79bc6b900c04915dd9ebae584e2",
 	"create_category":     "6b22b5ce51abf4e225e23a79f81be09a7fb90acb265e93a8faf9446dff74018d",
 	"create_user":         "1e940be3afefc0a5c6273bbadcddc1e29811e9548e5227ac2adfe697ca5ce081",
