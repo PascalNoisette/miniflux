@@ -25,4 +25,12 @@ class ArticleHandler {
             request.execute();
         });
     }
+
+    static swapTitleLinks() {
+        document.querySelectorAll(".item-title a").forEach((element) => {
+            var tmpUrl = element.dataset.altUrl;
+            element.dataset.altUrl = element.href;
+            element.href = tmpUrl;
+        });
+    }
 }
