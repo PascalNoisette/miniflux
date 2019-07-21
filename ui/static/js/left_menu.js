@@ -20,7 +20,9 @@ class LeftMenu {
         if (!DomHelper.isVisible(menu)) {
             menu.style.display = "block";
             new RequestBuilder(menu.dataset.url + "?status=1").execute();
-            main.addEventListener('click', LeftMenu.toggle, false);
+            if (window.matchMedia("(max-width: 1024px)").matches) {
+                main.addEventListener('click', LeftMenu.toggle, false);
+            }
         } else {
             menu.style.display = "none";
             new RequestBuilder(menu.dataset.url+ "?status=0").execute();
