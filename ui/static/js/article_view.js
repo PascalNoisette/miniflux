@@ -28,6 +28,9 @@ class ArticleHandler {
 
     static swapTitleLinks() {
         document.querySelectorAll(".item-title a").forEach((element) => {
+            if (typeof(element.dataset.altUrl) == "undefined") {
+                return;
+            }
             var tmpUrl = element.dataset.altUrl;
             element.dataset.altUrl = element.href;
             element.href = tmpUrl;
