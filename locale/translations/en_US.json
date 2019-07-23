@@ -84,6 +84,8 @@
         "%d minutes read"
     ],
     "page.shared_entries.title": "Shared Entries",
+    "entry.see.more": "See more",
+    "entry.see.less": "See less",
     "page.unread.title": "Unread",
     "page.starred.title": "Starred",
     "page.categories.title": "Categories",

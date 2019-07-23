@@ -71,6 +71,6 @@
             </li>
         {{ end }}
     </ul>
-    <a class="article_view_url" href="{{ route "fetchContent" "entryID" .entry.ID }}" style="display:none"></a>
+    <a class="article_view_url" href="{{ route "fetchContent" "entryID" .entry.ID }}" style="display:none" data-label-see-more="{{ t "entry.see.more" }}"  data-label-see-less="{{ t "entry.see.less" }}"></a>
 </div>
 {{ end }}

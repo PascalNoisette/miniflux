@@ -84,6 +84,8 @@
         "%d minut czytania"
     ],
     "page.shared_entries.title": "Udostępnione wpisy",
+    "entry.see.more": "See more",
+    "entry.see.less": "See less",
     "page.unread.title": "Nieprzeczytane",
     "page.starred.title": "Oznaczone gwiazdką",
     "page.categories.title": "Kategorie",

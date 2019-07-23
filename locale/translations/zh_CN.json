@@ -84,6 +84,8 @@
         "%d分钟阅读"
     ],
     "page.shared_entries.title": "共享条目",
+    "entry.see.more": "See more",
+    "entry.see.less": "See less",
     "page.unread.title": "未读",
     "page.starred.title": "星标",
     "page.categories.title": "分类",

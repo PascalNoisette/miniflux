@@ -74,7 +74,7 @@ var templateCommonMap = map[string]string{
                 >{{ if eq .entry.Status "read" }}✘&nbsp;{{ t "entry.status.unread" }}{{ else }}✔&#xfe0e;&nbsp;{{ t "entry.status.read" }}{{ end }}</a>
         </li>
     </ul>
-    <a class="article_view_url" href="{{ route "fetchContent" "entryID" .entry.ID }}" style="display:none"></a>
+    <a class="article_view_url" href="{{ route "fetchContent" "entryID" .entry.ID }}" style="display:none" data-label-see-more="{{ t "entry.see.more" }}"  data-label-see-less="{{ t "entry.see.less" }}"></a>
 </div>
 {{ end }}`,
 	"layout": `{{ define "base" }}
@@ -286,7 +286,7 @@ var templateCommonMap = map[string]string{
 var templateCommonMapChecksums = map[string]string{
 	"ajax":              "1439fe04aa8da9a1b9f936bfbca8d8c71427e52bd01bb16a173d3e851e8fd499",
 	"entry_pagination":  "4faa91e2eae150c5e4eab4d258e039dfdd413bab7602f0009360e6d52898e353",
-	"item_meta":         "0659868e5ca0d564610cbfbc1a3856f5f3a630536eb11f4889ff659665c2ec55",
+	"item_meta":         "23d46cd6ccb39c4e3c6337bee4685fae7abaf626eb9655f2fdaf3eae292a6613",
 	"layout":            "334d953c419afe77c600ef048c08b036f1d3b83395894be153d0bab36c865831",
 	"left_menu":         "fcb504e3a24ffcdc56fb0c56c02910830d595bc137156047220e9b8d5a49a762",
 	"pagination":        "3386e90c6e1230311459e9a484629bc5d5bf39514a75ef2e73bbbc61142f7abb",

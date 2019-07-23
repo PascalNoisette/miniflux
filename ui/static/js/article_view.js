@@ -18,6 +18,7 @@ class ArticleHandler {
                     view.innerHTML = json.content;
                     loadingElementWrapper.remove();
                     element.parentNode.appendChild(view);
+                    ArticleHandler.fold(view, element.dataset.labelSeeLess, element.dataset.labelSeeMore);
                     element.remove();
                 });
             });
@@ -35,5 +36,34 @@ class ArticleHandler {
             element.dataset.altUrl = element.href;
             element.href = tmpUrl;
         });
+    }
+
+    static fold(e, lessLabel, moreLabel) {
+        var limit = 400;
+        if (e.offsetHeight<=limit) {
+            return;
+        }
+        var rbc, ctrl;
+        e.style.maxHeight=limit+"px";
+        ctrl = document.createElement("div");
+        ctrl.classList.add("see-more");
+        ctrl.appendChild( document.createTextNode(moreLabel));
+        ctrl.addEventListener("click", function () {
+            e.style.maxHeight="inherit";
+            ctrl.style.display="none";
+            rbc.style.display="";
+        });
+        rbc = document.createElement("div");
+        rbc.classList.add("see-more");
+        rbc.classList.add("see-less");
+        rbc.appendChild( document.createTextNode(lessLabel));
+        rbc.addEventListener("click", function () {
+            e.style.maxHeight=limit + "px";
+            ctrl.style.display="";
+            rbc.style.display="none";
+        });
+        rbc.style.display="none";
+        e.parentNode.insertBefore(ctrl, e.nextSibling);
+        e.parentNode.insertBefore(rbc, e.nextSibling);
     }
 }

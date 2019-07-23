@@ -84,6 +84,8 @@
         "%d minutes de lecture"
     ],
     "page.shared_entries.title": "Articles partagés",
+    "entry.see.more": "Voir plus",
+    "entry.see.less": "Voir moins",
     "page.unread.title": "Non lus",
     "page.starred.title": "Favoris",
     "page.categories.title": "Catégories",
