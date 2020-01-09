@@ -26,6 +26,7 @@ export GO111MODULE=on
 	netbsd-amd64 \
 	windows-amd64 \
 	windows-x86 \
+	buildx \
 	build \
 	run \
 	clean \
@@ -43,8 +44,12 @@ generate:
 miniflux: generate
 	@ go build -ldflags=$(LD_FLAGS) -o $(APP) main.go
 
+linux-linux/amd64: linux-amd64
+
 linux-amd64: generate
 	@ GOOS=linux GOARCH=amd64 go build -ldflags=$(LD_FLAGS) -o $(APP)-linux-amd64 main.go
+
+linux-linux/arm64: linux-armv8
 
 linux-armv8: generate
 	@ GOOS=linux GOARCH=arm64 go build -ldflags=$(LD_FLAGS) -o $(APP)-linux-armv8 main.go
@@ -90,6 +95,9 @@ openbsd-x86: generate
 
 windows-x86: generate
 	@ GOOS=windows GOARCH=386 go build -ldflags=$(LD_FLAGS) -o $(APP)-windows-x86 main.go
+
+buildx: generate
+	@ docker buildx build -t netpascal0123/miniflux:1.0 --platform=linux/arm64,linux/amd64 . --push
 
 run: generate
 	@ go run main.go -debug
