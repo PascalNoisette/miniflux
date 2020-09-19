@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     mouseHandler.onClick("a[data-on-click=markPageAsRead]", (event) => {
-        navHandler.markPageAsRead(event.target.dataset.showOnlyUnread || false);
+        markPageAsRead(event.target.dataset.showOnlyUnread || false);
     });
 
     onClick("a[data-confirm]", (event) => handleConfirmationMessage(event.target, (url, redirectURL) => {
