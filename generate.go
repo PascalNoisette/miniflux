@@ -17,6 +17,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/css"
 	"github.com/tdewolff/minify/v2/js"
 )
