@@ -71,33 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     );
-    let mouseHandler = new MouseHandler();
-    mouseHandler.onClick("a[data-save-entry]", (event) => {
-        saveEntry(event.target);
-    });
 
-    mouseHandler.onClick("a[data-toggle-bookmark]", (event) => {
-        toggleBookmark(event.target);
-    });
-
-    mouseHandler.onClick("a[data-toggle-status]", (event) => {
-        let currentItem = DomHelper.findParent(event.target, "entry");
-        if (! currentItem) {
-            currentItem = DomHelper.findParent(event.target, "item");
-        }
-
-        if (currentItem) {
-            toggleEntryStatus(currentItem);
-        }
-    });
-
-    mouseHandler.onClick("a[data-fetch-content-entry]", (event) => {
-        handleFetchOriginalContent();
-    });
-
-    mouseHandler.onClick("a[data-on-click=markPageAsRead]", (event) => {
-        markPageAsRead(event.target.dataset.showOnlyUnread || false);
-    });
 
     onClick("a[data-confirm]", (event) => handleConfirmationMessage(event.target, (url, redirectURL) => {
         let request = new RequestBuilder(url);
@@ -120,13 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     LeftMenu.load()
-    mouseHandler.onClick(".show_menu", () => LeftMenu.toggle());
+    onClick(".show_menu", (event) => LeftMenu.toggle());
 
     if (document.querySelector("body[data-entry-embedded=true]")) {
-        ArticleHandler.swapTitleLinks();
+        ArticleHandler.load();
     }
 
-    mouseHandler.onClick(".toggle-entry-embedded", (event) => {
+    onClick(".toggle-entry-embedded", (event) => {
         ArticleHandler.swapTitleLinks();
         if (document.querySelector("body").dataset.entryEmbedded === "true") {
             document.querySelector("body").dataset.entryEmbedded = "false";
@@ -140,13 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
     });
 
-    LeftMenu.load()
-    mouseHandler.onClick(".show_menu", () => LeftMenu.toggle());
-    ArticleHandler.load();
-
-    if (document.querySelector("body[data-entry-embedded=true]")) {
-        ArticleHandler.load();
-    }
 
     if ("serviceWorker" in navigator) {
         let scriptElement = document.getElementById("service-worker-script");
