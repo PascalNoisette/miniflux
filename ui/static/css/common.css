@@ -319,6 +319,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;

@@ -433,6 +433,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -1699,6 +1700,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -2966,6 +2968,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -4232,6 +4235,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -5606,6 +5610,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -6979,6 +6984,7 @@ left_menu {
     left_menu .menu_category{
         padding-left: 1em;
         padding-top: 1em;
+        clear: both;
     }
     left_menu .menu_category a{
         text-decoration: none;
@@ -7819,10 +7825,10 @@ article{
 }
 
 var StylesheetsChecksums = map[string]string{
-	"dark_sans_serif":   "6eadcc520e1b2eb32f61a2bdcea220070aa794740ef7852bf1eef87974a4b891",
-	"dark_serif":        "715ae6f1973d68a4e4ba7985a58cd820a48e3cdedae23888ba5a8e6fba46be0e",
-	"light_sans_serif":  "72136aae9897744dcc75af27ded78da5caee9bc763b5ffbcaeac6d7c2c3134b7",
-	"light_serif":       "718914b8eeb3bd21b6756bfe998173be0f82d0ace939e5ec84e91e72f3ee39c9",
-	"system_sans_serif": "67c76394445ca98811620819e4d9dd17b5e0e8014168e32d26017cd97b435f06",
-	"system_serif":      "e55ca9cdb008742acf96c49ca93d580f17f9147c0293abdde640e6b1d0237da9",
+	"dark_sans_serif":   "35990360a511b93f24ee973bf14df0648c299760e36f6ba5d5f784f370778fc9",
+	"dark_serif":        "51c6d83918934be120f3c3545dead334e3886c8ae5a27d8849af3bc5677cd46d",
+	"light_sans_serif":  "3bc298745d4053931ee35bd1f9b3ac22ae0389c2823ac4c64db2bcda0a262e7a",
+	"light_serif":       "c0b96197d61fe994a3fc9ee433ef3b810b203796b58f148a6410a63b4816e84d",
+	"system_sans_serif": "af4d631a313a67d3d658f5ab0c46a984657c9e5e31e5d2ee051839d8968c922c",
+	"system_serif":      "9ffeeddd0ec691369f652a62a6dc0ec2c2e77c8deb77cd36003b4fa74701a000",
 }
