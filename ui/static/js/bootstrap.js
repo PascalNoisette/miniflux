@@ -64,9 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (! document.querySelector("body[data-auto-mark-as-read=true]")) {
                     return;
                 }
-                let currentStatus = element.parentNode.querySelector("a[data-toggle-status]").dataset.value;
-                if (element.dataset.belowTopEdge === "false" && currentStatus == "unread") {
-                    toggleEntryStatus(element.parentNode);
+                let elementWithStatus = element.parentNode.querySelector("a[data-toggle-status]")
+                if (elementWithStatus) {
+                    let currentStatus = elementWithStatus.dataset.value;
+                    if (element.dataset.belowTopEdge === "false" && currentStatus == "unread") {
+                        toggleEntryStatus(element.parentNode);
+                    }
                 }
             }
         }

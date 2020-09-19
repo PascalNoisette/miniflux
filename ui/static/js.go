@@ -1215,9 +1215,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (! document.querySelector("body[data-auto-mark-as-read=true]")) {
                     return;
                 }
-                let currentStatus = element.parentNode.querySelector("a[data-toggle-status]").dataset.value;
-                if (element.dataset.belowTopEdge === "false" && currentStatus == "unread") {
-                    toggleEntryStatus(element.parentNode);
+                let elementWithStatus = element.parentNode.querySelector("a[data-toggle-status]")
+                if (elementWithStatus) {
+                    let currentStatus = elementWithStatus.dataset.value;
+                    if (element.dataset.belowTopEdge === "false" && currentStatus == "unread") {
+                        toggleEntryStatus(element.parentNode);
+                    }
                 }
             }
         }
@@ -1315,6 +1318,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "fdab5932861feb5fd69304e5bc020d8a55a8741cf1edbb107ee3a14fdb356d38",
+	"app": "7fe6361ce04bd5d59a30c88f814f758fdc7c9e40444d8b35f40eccc239578532",
 	"sw":  "74f8138fcb9f13251b777c740575823c1698bddbd16bcd46603929bacdc4064a",
 }
