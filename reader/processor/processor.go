@@ -39,6 +39,10 @@ func ProcessFeedEntries(store *storage.Storage, feed *model.Feed) {
 
 // ProcessEntryWebPage downloads the entry web page and apply rewrite rules.
 func ProcessEntryWebPage(entry *model.Entry) error {
+	if entry.Content != "" {
+		return nil
+	}
+
 	content, err := scraper.Fetch(entry.URL, entry.Feed.ScraperRules, entry.Feed.UserAgent)
 	if err != nil {
 		return err
