@@ -250,6 +250,11 @@ func (r *rssItem) entryTitle() string {
 }
 
 func (r *rssItem) entryContent() string {
+	if strings.Contains(r.entryCommentsURL(), "news.ycombinator.com") {
+		// TODO create a map of all rss site whose description is not usefull
+		// the entry.URL will be scraped to get a proper description later 
+		return ""
+	}
 	for _, value := range []string{r.DublinCoreContent, r.Description, r.PodcastDescription()} {
 		if value != "" {
 			return value
