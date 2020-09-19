@@ -150,12 +150,47 @@ create index document_vectors_idx on entries using gin(document_vectors);`,
 	"schema_version_24": `alter table users add column auto_mark_as_read boolean default 'f';
 alter table users add column entry_embedded boolean default 'f';`,
 	"schema_version_25": `alter table users add column left_menu_state boolean default 'f';`,
+	"schema_version_26": `alter table entries add column changed_at timestamp with time zone;
+update entries set changed_at = published_at;
+alter table entries alter column changed_at set not null;
+`,
+	"schema_version_27": `create table api_keys (
+    id serial not null,
+    user_id int not null references users(id) on delete cascade,
+    token text not null unique,
+    description text not null,
+    last_used_at timestamp with time zone,
+    created_at timestamp with time zone default now(),
+    primary key(id),
+    unique (user_id, description)
+);
+`,
+	"schema_version_28": `alter table entries add column share_code text not null default '';
+create unique index entries_share_code_idx on entries using btree(share_code) where share_code <> '';
+`,
+	"schema_version_29": `create index enclosures_user_entry_url_idx on enclosures(user_id, entry_id, md5(url));
+`,
 	"schema_version_3": `create table tokens (
     id text not null,
     value text not null,
     created_at timestamp with time zone not null default now(),
     primary key(id, value)
 );`,
+	"schema_version_30": `alter table feeds add column next_check_at timestamp with time zone default now();
+create index entries_user_feed_idx on entries (user_id, feed_id);
+`,
+	"schema_version_31": `alter table feeds add column ignore_http_cache bool default false;`,
+	"schema_version_32": `alter table users add column entries_per_page int default 100;
+`,
+	"schema_version_33": `alter table users add column show_reading_time boolean default 't';`,
+	"schema_version_34": `CREATE INDEX entries_id_user_status_idx ON entries USING btree (id, user_id, status);`,
+	"schema_version_35": `alter table feeds add column fetch_via_proxy bool default false;
+`,
+	"schema_version_36": `alter table feeds add column disabled boolean default 'f';`,
+	"schema_version_37": `ALTER TABLE users ALTER COLUMN theme SET DEFAULT 'light_serif';
+UPDATE users SET theme='light_serif' WHERE theme='default';
+UPDATE users SET theme='light_sans_serif' WHERE theme='sansserif';
+UPDATE users SET theme='dark_serif' WHERE theme='black';`,
 	"schema_version_4": `create type entry_sorting_direction as enum('asc', 'desc');
 alter table users add column entry_direction entry_sorting_direction default 'asc';
 `,
@@ -203,7 +238,19 @@ var SqlMapChecksums = map[string]string{
 	"schema_version_23": "cb3512d328436447f114e305048c0daa8af7505cfe5eab02778b0de1156081b2",
 	"schema_version_24": "c45c3262190c7dd34126772465a9d081a9ca737f0cc9e68fb0794b2024fafb2c",
 	"schema_version_25": "df05c7e951f0584d4dd45997ff88b34641c7b0829204d127b210e86e9adf18cf",
+	"schema_version_26": "64f14add40691f18f514ac0eed10cd9b19c83a35e5c3d8e0bce667e0ceca9094",
+	"schema_version_27": "4235396b37fd7f52ff6f7526416042bb1649701233e2d99f0bcd583834a0a967",
+	"schema_version_28": "a64b5ba0b37fe3f209617b7d0e4dd05018d2b8362d2c9c528ba8cce19b77e326",
+	"schema_version_29": "527403d951d025b387baf7b1ab80c014752c5429cc0b9851aeb34b7716cf2c68",
 	"schema_version_3":  "a54745dbc1c51c000f74d4e5068f1e2f43e83309f023415b1749a47d5c1e0f12",
+	"schema_version_30": "3ec48a9b2e7a0fc32c85f31652f723565c34213f5f2d7e5e5076aad8f0b40d23",
+	"schema_version_31": "9290ef295731b03ddfe32dcaded0be70d41b63572420ad379cf2874a9b54581c",
+	"schema_version_32": "5b4de8dd2d7e3c6ae4150e0e3931df2ee989f2c667145bd67294e5a5f3fae456",
+	"schema_version_33": "bf38514efeb6c12511f41b1cc484f92722240b0a6ae874c32a958dfea3433d02",
+	"schema_version_34": "1a3e036f652fc98b7564a27013f04e1eb36dd0d68893c723168f134dc1065822",
+	"schema_version_35": "162a55df78eed4b9c9c141878132d5f1d97944b96f35a79e38f55716cdd6b3d2",
+	"schema_version_36": "1224754c5b9c6b4038599852bbe72656d21b09cb018d3970bd7c00f0019845bf",
+	"schema_version_37": "f8e492fba2fc6324dec234cb715180cd6d2d632aa60b0d63cad02b2a104acef6",
 	"schema_version_4":  "216ea3a7d3e1704e40c797b5dc47456517c27dbb6ca98bf88812f4f63d74b5d9",
 	"schema_version_5":  "46397e2f5f2c82116786127e9f6a403e975b14d2ca7b652a48cd1ba843e6a27c",
 	"schema_version_6":  "9d05b4fb223f0e60efc716add5048b0ca9c37511cf2041721e20505d6d798ce4",
