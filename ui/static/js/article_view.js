@@ -38,6 +38,10 @@ class ArticleHandler {
         });
     }
 
+    static escapeKey() {
+        document.querySelector("article[data-_appear-triggered=true] .see-less").click();
+    }
+
     static fold(e, lessLabel, moreLabel) {
         var limit = 400;
         if (e.offsetHeight<=limit) {
@@ -58,6 +62,7 @@ class ArticleHandler {
         rbc.classList.add("see-less");
         rbc.appendChild( document.createTextNode(lessLabel));
         rbc.addEventListener("click", function () {
+            console.log("//TODO accurate limit = top BoundBox of element up to the bottom of the visible area");
             e.style.maxHeight=limit + "px";
             ctrl.style.display="";
             rbc.style.display="none";

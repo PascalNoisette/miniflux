@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         keyboardHandler.on("?", () => showKeyboardShortcuts());
         keyboardHandler.on("#", () => unsubscribeFromFeed());
         keyboardHandler.on("/", (e) => setFocusToSearchInput(e));
-        keyboardHandler.on("Escape", () => ModalHandler.close());
+        keyboardHandler.on("Escape", () => ModalHandler.close() & ArticleHandler.escapeKey());
         keyboardHandler.listen();
     }
 

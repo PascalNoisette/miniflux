@@ -996,6 +996,10 @@ class LeftMenu {
         });
     }
 
+    static escapeKey() {
+        document.querySelector("article[data-_appear-triggered=true] .see-less").click();
+    }
+
     static fold(e, lessLabel, moreLabel) {
         var limit = 400;
         if (e.offsetHeight<=limit) {
@@ -1016,6 +1020,7 @@ class LeftMenu {
         rbc.classList.add("see-less");
         rbc.appendChild( document.createTextNode(lessLabel));
         rbc.addEventListener("click", function () {
+            console.log("//TODO accurate limit = top BoundBox of element up to the bottom of the visible area");
             e.style.maxHeight=limit + "px";
             ctrl.style.display="";
             rbc.style.display="none";
@@ -1182,7 +1187,7 @@ document.addEventListener("DOMContentLoaded", function () {
         keyboardHandler.on("?", () => showKeyboardShortcuts());
         keyboardHandler.on("#", () => unsubscribeFromFeed());
         keyboardHandler.on("/", (e) => setFocusToSearchInput(e));
-        keyboardHandler.on("Escape", () => ModalHandler.close());
+        keyboardHandler.on("Escape", () => ModalHandler.close() & ArticleHandler.escapeKey());
         keyboardHandler.listen();
     }
 
@@ -1318,6 +1323,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "7fe6361ce04bd5d59a30c88f814f758fdc7c9e40444d8b35f40eccc239578532",
+	"app": "f065671786850a4369aef2f8333ca8c82f5d005bd270204748cbcbabf32f163e",
 	"sw":  "74f8138fcb9f13251b777c740575823c1698bddbd16bcd46603929bacdc4064a",
 }
