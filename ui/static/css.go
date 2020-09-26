@@ -943,6 +943,9 @@ a.button {
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
 }
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
+}
 
 /* Feeds list */
 article.feed-parsing-error {
@@ -2209,6 +2212,9 @@ a.button {
 
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
+}
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
 }
 
 /* Feeds list */
@@ -3478,6 +3484,9 @@ a.button {
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
 }
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
+}
 
 /* Feeds list */
 article.feed-parsing-error {
@@ -4744,6 +4753,9 @@ a.button {
 
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
+}
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
 }
 
 /* Feeds list */
@@ -6120,6 +6132,9 @@ a.button {
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
 }
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
+}
 
 /* Feeds list */
 article.feed-parsing-error {
@@ -7494,6 +7509,9 @@ a.button {
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
 }
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
+}
 
 /* Feeds list */
 article.feed-parsing-error {
@@ -7825,10 +7843,10 @@ article{
 }
 
 var StylesheetsChecksums = map[string]string{
-	"dark_sans_serif":   "35990360a511b93f24ee973bf14df0648c299760e36f6ba5d5f784f370778fc9",
-	"dark_serif":        "51c6d83918934be120f3c3545dead334e3886c8ae5a27d8849af3bc5677cd46d",
-	"light_sans_serif":  "3bc298745d4053931ee35bd1f9b3ac22ae0389c2823ac4c64db2bcda0a262e7a",
-	"light_serif":       "c0b96197d61fe994a3fc9ee433ef3b810b203796b58f148a6410a63b4816e84d",
-	"system_sans_serif": "af4d631a313a67d3d658f5ab0c46a984657c9e5e31e5d2ee051839d8968c922c",
-	"system_serif":      "9ffeeddd0ec691369f652a62a6dc0ec2c2e77c8deb77cd36003b4fa74701a000",
+	"dark_sans_serif":   "c15ccca244310b1b2f51bb6a608a2fe2fee9438cbcc414caed778beb1e58389d",
+	"dark_serif":        "ff970d067263b5150ca0f61b4d4e4fdbd3d13c44123f6a1edbfb045bd365aa0c",
+	"light_sans_serif":  "4515fb7b897751b95deccfdcbd839fa39f6ca994d0f2471262702eca65e59c49",
+	"light_serif":       "ecc90bec65e5b6d6fbfc504998e43475a0b75285bc3744b1d36306589979f19d",
+	"system_sans_serif": "4c9b25c1fcf3408921bef3a88349d028f93e16d65aacc9737fa4a39b26f7b361",
+	"system_serif":      "a21bf88487f67b6249ee4d127cdc92691322664156bd9eccadfe7afad60e1cc9",
 }

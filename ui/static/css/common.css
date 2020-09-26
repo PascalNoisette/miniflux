@@ -829,6 +829,9 @@ a.button {
 .hide-read-items .item-status-read:not(.current-item) {
     display: none;
 }
+body[data-entry-embedded="true"] .hide-read-items .item-status-read:not(.current-item) {
+    display: block;
+}
 
 /* Feeds list */
 article.feed-parsing-error {
