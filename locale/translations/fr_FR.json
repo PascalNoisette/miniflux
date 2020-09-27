@@ -275,6 +275,7 @@
     "form.prefs.label.custom_css": "CSS personnalisé",
     "form.prefs.label.auto_mark_as_read": "Marquer comme lu au défilement",
     "form.prefs.label.entry_embedded": "Charger la vue article directement dans les listes",
+    "form.prefs.label.left_menu_state": "Show left menu",
     "form.import.label.file": "Fichier OPML",
     "form.import.label.url": "URL",
     "form.integration.fever_activate": "Activer l'API de Fever",

@@ -1396,6 +1396,7 @@ var templateViewsMap = map[string]string{
     <label><input type="checkbox" name="show_reading_time" value="1" {{ if .form.ShowReadingTime }}checked{{ end }}> {{ t "form.prefs.label.show_reading_time" }}</label>
     <label><input type="checkbox" name="auto_mark_as_read" value="1" {{ if .form.AutoMarkAsRead }}checked{{ end }}> {{ t "form.prefs.label.auto_mark_as_read" }}</label>
     <label><input type="checkbox" name="entry_embedded" value="1" {{ if .form.EntryEmbedded }}checked{{ end }}> {{ t "form.prefs.label.entry_embedded" }}</label>
+    <label><input data-url="{{ route "setLeftMenuStatus" }}" type="checkbox" name="left_menu_state" value="1" {{ if .user.LeftMenuState }}checked{{ end }}> {{ t "form.prefs.label.left_menu_state" }}</label>
 
     <label>{{t "form.prefs.label.custom_css" }}</label><textarea name="custom_css" cols="40" rows="5">{{ .form.CustomCSS }}</textarea>
     <div class="buttons">
@@ -1643,7 +1644,7 @@ var templateViewsMapChecksums = map[string]string{
 	"login":               "79ff2ca488c0a19b37c8fa227a21f73e94472eb357a51a077197c852f7713f11",
 	"search_entries":      "c0786ddc6b17e865007b975eefb97417935cbc601f5917cca1ee0d3f584594bc",
 	"sessions":            "5d5c677bddbd027e0b0c9f7a0dd95b66d9d95b4e130959f31fb955b926c2201c",
-	"settings":            "7d208efcfcf253c12647a07d0154bd5dbd9379612a53d0fc9604161e597090fb",
+	"settings":            "2c63284a76f529e11c8552871533a0f9924e94dc8c65267cb6a6c1c8562eb6cd",
 	"shared_entries":      "1494d81e46f6af534a73cf6a91f8dfda1932a477bb3a70143513896ac0f0220b",
 	"unread_entries":      "50ed1e042ab24c2269baf21f455453587b1293b1b20bd9fc3acb402618602b70",
 	"users":               "d7ff52efc582bbad10504f4a04fa3adcc12d15890e45dff51cac281e0c446e45",

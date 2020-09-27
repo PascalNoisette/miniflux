@@ -1,5 +1,8 @@
 class ArticleHandler {
     static load(element) {
+        if (typeof(element) == "undefined") {
+            return
+        }
         let elements = element.querySelectorAll(".article_view_url");
         elements.forEach((element) => {
             let loadingElementWrapper = document.createElement("div");

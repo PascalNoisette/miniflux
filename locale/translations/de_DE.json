@@ -275,6 +275,7 @@
     "form.prefs.label.custom_css": "Benutzerdefiniertes CSS",
     "form.prefs.label.auto_mark_as_read": "Mark as read when article is scrolled",
     "form.prefs.label.entry_embedded": "Load content directly in list (embedded)",
+    "form.prefs.label.left_menu_state": "Show left menu",
     "form.import.label.file": "OPML Datei",
     "form.import.label.url": "URL",
     "form.integration.fever_activate": "Fever API aktivieren",

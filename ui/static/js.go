@@ -1027,7 +1027,18 @@ class Cookie {
     }
 }class LeftMenu {
     static load() {
+        let settings = document.querySelector('input[name="left_menu_state"]');
+        if (settings) {
+            settings.addEventListener('click', (event) => {
+                let status = event.target.checked ? 1 : 0;
+                new RequestBuilder(event.target.dataset.url + "?status=" + status).execute();
+            });
+        }
+
         let link = document.querySelector(".left_menu a");
+        if (!link) {
+            return;
+        }
         let request = new RequestBuilder(link.href);
         request.options.method = "GET"
         request.withCallback(function (data){
@@ -1047,11 +1058,10 @@ class Cookie {
                     });
                 });
                 Cookie.getArray("folded_categories").forEach((href) => {
-                    console.log(document.querySelector(".menu_category a[href='" + href + "']"));
                     document.querySelector(".menu_category a[href='" + href + "']").closest(".menu_category").classList.toggle("category_folded");
                 });
             });
-            if (document.querySelector("body").dataset.leftMenuState === "true") {
+            if (Cookie.getCookie('leftMenuState') === "true") {
                 LeftMenu.toggle();
             }
         });
@@ -1063,18 +1073,21 @@ class Cookie {
         main.classList.toggle("left_menu_main");
         if (!DomHelper.isVisible(menu)) {
             menu.style.display = "block";
-            new RequestBuilder(menu.dataset.url + "?status=1").execute();
+            Cookie.setCookie('leftMenuState', 'true');
             if (window.matchMedia("(max-width: 1024px)").matches) {
                 main.addEventListener('click', LeftMenu.toggle, false);
             }
         } else {
+            Cookie.setCookie('leftMenuState', '');
             menu.style.display = "none";
-            new RequestBuilder(menu.dataset.url+ "?status=0").execute();
             main.removeEventListener('click', LeftMenu.toggle, false);
         }
     }
 }class ArticleHandler {
     static load(element) {
+        if (typeof(element) == "undefined") {
+            return
+        }
         let elements = element.querySelectorAll(".article_view_url");
         elements.forEach((element) => {
             let loadingElementWrapper = document.createElement("div");
@@ -1440,6 +1453,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "e7d36558bbfc7471a6cfd3eab44920d5315437e0e6e0a89aae8d6e878de13a18",
+	"app": "16b380e4578d17e9ef315814f75b75fbf5f07919b376220184b627b33c6033af",
 	"sw":  "74f8138fcb9f13251b777c740575823c1698bddbd16bcd46603929bacdc4064a",
 }
