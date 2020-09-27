@@ -10,8 +10,18 @@ class LeftMenu {
                 dropHandler.listen();
                 document.querySelectorAll(".category_foldable").forEach((element) => {
                     element.addEventListener('click', (event) => {
-                        event.target.closest(".menu_category").classList.toggle("category_folded");
+                        let menuCategory = event.target.closest(".menu_category");
+                        menuCategory.classList.toggle("category_folded");
+                        if (menuCategory.classList.contains("category_folded")) {
+                            Cookie.push("folded_categories", menuCategory.querySelector("a").getAttribute('href'));
+                        } else {
+                            Cookie.filter("folded_categories", menuCategory.querySelector("a").getAttribute('href'));
+                        }
                     });
+                });
+                Cookie.getArray("folded_categories").forEach((href) => {
+                    console.log(document.querySelector(".menu_category a[href='" + href + "']"));
+                    document.querySelector(".menu_category a[href='" + href + "']").closest(".menu_category").classList.toggle("category_folded");
                 });
             });
             if (document.querySelector("body").dataset.leftMenuState === "true") {

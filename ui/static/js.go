@@ -984,7 +984,48 @@ function toast(msg) {
         toastWrapper.classList.add('toastAnimate');
     }, 100);
 }
-class LeftMenu {
+class Cookie {
+    static push(cname, cvalue) {
+        let currentValue = Cookie.getArray(cname);
+        currentValue.push(cvalue);
+        Cookie.setCookie(cname, JSON.stringify(currentValue));
+    }
+    static filter(cname, cvalue) {
+        let currentValue = Cookie.getArray(cname);
+        currentValue = currentValue.filter(i => i != cvalue );
+        Cookie.setCookie(cname, JSON.stringify(currentValue));
+    }
+    static getArray(cname) {
+        let currentValue = Cookie.getCookie(cname);
+        if (currentValue == "") {
+            currentValue = "[]";
+        }
+        currentValue = JSON.parse(currentValue);
+        return currentValue;
+    }
+    static setCookie(cname, cvalue, exdays=10) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Strict;" ;
+    }
+
+    static getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+}class LeftMenu {
     static load() {
         let link = document.querySelector(".left_menu a");
         let request = new RequestBuilder(link.href);
@@ -996,8 +1037,18 @@ class LeftMenu {
                 dropHandler.listen();
                 document.querySelectorAll(".category_foldable").forEach((element) => {
                     element.addEventListener('click', (event) => {
-                        event.target.closest(".menu_category").classList.toggle("category_folded");
+                        let menuCategory = event.target.closest(".menu_category");
+                        menuCategory.classList.toggle("category_folded");
+                        if (menuCategory.classList.contains("category_folded")) {
+                            Cookie.push("folded_categories", menuCategory.querySelector("a").getAttribute('href'));
+                        } else {
+                            Cookie.filter("folded_categories", menuCategory.querySelector("a").getAttribute('href'));
+                        }
                     });
+                });
+                Cookie.getArray("folded_categories").forEach((href) => {
+                    console.log(document.querySelector(".menu_category a[href='" + href + "']"));
+                    document.querySelector(".menu_category a[href='" + href + "']").closest(".menu_category").classList.toggle("category_folded");
                 });
             });
             if (document.querySelector("body").dataset.leftMenuState === "true") {
@@ -1389,6 +1440,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "da1419ed6c48e10c2fc1d67350ca3a4a6e344f7ed67b43eda9e41a0fd4d0cd42",
+	"app": "e7d36558bbfc7471a6cfd3eab44920d5315437e0e6e0a89aae8d6e878de13a18",
 	"sw":  "74f8138fcb9f13251b777c740575823c1698bddbd16bcd46603929bacdc4064a",
 }
