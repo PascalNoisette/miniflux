@@ -110,7 +110,7 @@
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
-    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" >
+    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" data-setfeedcategory="/menu/left/setfeedcategory">
         {{ template "left_menu" .}}
     </left_menu>
     <main>

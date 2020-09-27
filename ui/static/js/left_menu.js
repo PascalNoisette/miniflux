@@ -6,6 +6,8 @@ class LeftMenu {
         request.withCallback(function (data){
             data.text().then(function (text) {
                 document.getElementsByClassName("left_menu")[0].innerHTML = text;
+                let dropHandler = new DropHandler();
+                dropHandler.listen();
             });
             if (document.querySelector("body").dataset.leftMenuState === "true") {
                 LeftMenu.toggle();

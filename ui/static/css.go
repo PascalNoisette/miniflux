@@ -341,6 +341,12 @@ left_menu {
     margin-right: 15px;
     margin-left: 5px;
 }
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
+}
 
 @media (min-width: 600px) {
     body {
@@ -1610,6 +1616,12 @@ left_menu {
     float: left;
     margin-right: 15px;
     margin-left: 5px;
+}
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
 }
 
 @media (min-width: 600px) {
@@ -2882,6 +2894,12 @@ left_menu {
     margin-right: 15px;
     margin-left: 5px;
 }
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
+}
 
 @media (min-width: 600px) {
     body {
@@ -4151,6 +4169,12 @@ left_menu {
     float: left;
     margin-right: 15px;
     margin-left: 5px;
+}
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
 }
 
 @media (min-width: 600px) {
@@ -5530,6 +5554,12 @@ left_menu {
     margin-right: 15px;
     margin-left: 5px;
 }
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
+}
 
 @media (min-width: 600px) {
     body {
@@ -6907,6 +6937,12 @@ left_menu {
     margin-right: 15px;
     margin-left: 5px;
 }
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
+}
 
 @media (min-width: 600px) {
     body {
@@ -7843,10 +7879,10 @@ article{
 }
 
 var StylesheetsChecksums = map[string]string{
-	"dark_sans_serif":   "c15ccca244310b1b2f51bb6a608a2fe2fee9438cbcc414caed778beb1e58389d",
-	"dark_serif":        "ff970d067263b5150ca0f61b4d4e4fdbd3d13c44123f6a1edbfb045bd365aa0c",
-	"light_sans_serif":  "4515fb7b897751b95deccfdcbd839fa39f6ca994d0f2471262702eca65e59c49",
-	"light_serif":       "ecc90bec65e5b6d6fbfc504998e43475a0b75285bc3744b1d36306589979f19d",
-	"system_sans_serif": "4c9b25c1fcf3408921bef3a88349d028f93e16d65aacc9737fa4a39b26f7b361",
-	"system_serif":      "a21bf88487f67b6249ee4d127cdc92691322664156bd9eccadfe7afad60e1cc9",
+	"dark_sans_serif":   "ffc7c4bf23d57e8ee26cc0b45a21a0d1e9872bda23a7bf5dc99e6e4844fc348b",
+	"dark_serif":        "f188f30c5c4dc9bc2613dfe18f88d0176042b724de74180955b3c271364721e3",
+	"light_sans_serif":  "ff8f4740b2abe3cdbed51c8b1054afb8f0e8398eb7089026d686e6c943d924a3",
+	"light_serif":       "af2c67306d449bd44d3e48aa00bd09cbd9f81091110ea18699de124da0b90514",
+	"system_sans_serif": "59e2f403a9db77a34097e916c962c837b57d92cd9680c036e6c549b4ad4833b4",
+	"system_serif":      "16221567c2a0a185d7a054f81934a791577350cb16f459f93c156221087dcb9a",
 }

@@ -179,6 +179,7 @@ func main() {
 			"ui/static/js/dom_helper.js",
 			"ui/static/js/touch_handler.js",
 			"ui/static/js/keyboard_handler.js",
+			"ui/static/js/drop_handler.js",
 			"ui/static/js/request_builder.js",
 			"ui/static/js/modal_handler.js",
 			"ui/static/js/app.js",

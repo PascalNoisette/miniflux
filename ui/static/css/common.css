@@ -227,6 +227,12 @@ left_menu {
     margin-right: 15px;
     margin-left: 5px;
 }
+.header li.menu_category:hover a {
+    color: inherit;
+}
+.header li.menu_category li.menu_item:hover a {
+    color: #666;
+}
 
 @media (min-width: 600px) {
     body {

@@ -426,7 +426,7 @@ SOFTWARE.
     {{ if .flashErrorMessage }}
         <div class="flash-error-message alert alert-error">{{ .flashErrorMessage }}</div>
     {{ end }}
-    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" >
+    <left_menu  data-url="{{ route "setLeftMenuStatus" }}" data-setfeedcategory="/menu/left/setfeedcategory">
         {{ template "left_menu" .}}
     </left_menu>
     <main>
@@ -563,7 +563,7 @@ var templateCommonMapChecksums = map[string]string{
 	"feed_menu":         "318d8662dda5ca9dfc75b909c8461e79c86fb5082df1428f67aaf856f19f4b50",
 	"icons":             "3dbe754a98f524a227111191d76b8c6944711b13613cc548ee9e9808fe0bffb4",
 	"item_meta":         "2b00b340a18db9f42bb94d4fe30eea8903ac12031f841c808695e27322b125f7",
-	"layout":            "0e828938bf7f82573230ff8a3d6dcd3d7c2200b9236b05a6932cae33bccc7a80",
+	"layout":            "eabdbd174eaf0526cb7e0d2e8525928720b1dfdc45f9a720d6a63117e0eae25c",
 	"left_menu":         "fcb504e3a24ffcdc56fb0c56c02910830d595bc137156047220e9b8d5a49a762",
 	"pagination":        "7b61288e86283c4cf0dc83bcbf8bf1c00c7cb29e60201c8c0b633b2450d2911f",
 	"settings_menu":     "e2b777630c0efdbc529800303c01d6744ed3af80ec505ac5a5b3f99c9b989156",

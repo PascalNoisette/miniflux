@@ -6,7 +6,7 @@
         {{ range $category, $feeds := .feeds }}
         <li class="menu_category">
             <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
-        </li>
+        <ul>
             {{ range $feeds }}
             <li class="menu_item unread-counter-{{.Unread}}">
                 <span class="title">
@@ -22,6 +22,7 @@
                 </span>
             </li>
             {{ end }}
+        </ul></li>
         {{ end }}
     </ul>
         </div>
