@@ -6,6 +6,10 @@
         {{ range $category, $feeds := .feeds }}
         <li class="menu_category">
             <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
+            <span class="category_foldable">
+                <span class="category_open_folder">	&#128194;</span>
+                <span class="category_closed_folder">&#128193;</span>
+            </span>
         <ul>
             {{ range $feeds }}
             <li class="menu_item unread-counter-{{.Unread}}">

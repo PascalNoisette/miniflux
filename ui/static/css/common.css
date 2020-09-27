@@ -233,6 +233,12 @@ left_menu {
 .header li.menu_category li.menu_item:hover a {
     color: #666;
 }
+.category_closed_folder, .category_folded .category_open_folder, .header .category_folded li.menu_item{
+    display: none;
+}
+.category_folded .category_closed_folder{
+    display: inline;
+}
 
 @media (min-width: 600px) {
     body {

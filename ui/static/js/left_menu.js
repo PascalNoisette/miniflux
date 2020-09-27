@@ -8,6 +8,11 @@ class LeftMenu {
                 document.getElementsByClassName("left_menu")[0].innerHTML = text;
                 let dropHandler = new DropHandler();
                 dropHandler.listen();
+                document.querySelectorAll(".category_foldable").forEach((element) => {
+                    element.addEventListener('click', (event) => {
+                        event.target.closest(".menu_category").classList.toggle("category_folded");
+                    });
+                });
             });
             if (document.querySelector("body").dataset.leftMenuState === "true") {
                 LeftMenu.toggle();

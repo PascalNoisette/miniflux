@@ -1203,6 +1203,10 @@ var templateViewsMap = map[string]string{
         {{ range $category, $feeds := .feeds }}
         <li class="menu_category">
             <a href="{{ route "categoryEntries" "categoryID"  $category.ID }}">{{  $category.Title }}</a>
+            <span class="category_foldable">
+                <span class="category_open_folder">	&#128194;</span>
+                <span class="category_closed_folder">&#128193;</span>
+            </span>
         <ul>
             {{ range $feeds }}
             <li class="menu_item unread-counter-{{.Unread}}">
@@ -1635,7 +1639,7 @@ var templateViewsMapChecksums = map[string]string{
 	"history_entries":     "abfd3767fddb557b14c1bc9a013058b04f72f2b9d9531e5286053b01e646d8b5",
 	"import":              "1b59b3bd55c59fcbc6fbb346b414dcdd26d1b4e0c307e437bb58b3f92ef01ad1",
 	"integrations":        "7d0d936a60b50371e9b0ff411ca31a646a5897bc84894febb09cd4b08fc91f2b",
-	"left_menu":           "6c3330789c8bab7be9b6674a86985c1494fe54b1250998bab06001400c3b3ff7",
+	"left_menu":           "0f943f3dd1042a074b54f3d58477de2014a6ff976ea516cbf946fd7950d989c2",
 	"login":               "79ff2ca488c0a19b37c8fa227a21f73e94472eb357a51a077197c852f7713f11",
 	"search_entries":      "c0786ddc6b17e865007b975eefb97417935cbc601f5917cca1ee0d3f584594bc",
 	"sessions":            "5d5c677bddbd027e0b0c9f7a0dd95b66d9d95b4e130959f31fb955b926c2201c",

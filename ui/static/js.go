@@ -994,6 +994,11 @@ class LeftMenu {
                 document.getElementsByClassName("left_menu")[0].innerHTML = text;
                 let dropHandler = new DropHandler();
                 dropHandler.listen();
+                document.querySelectorAll(".category_foldable").forEach((element) => {
+                    element.addEventListener('click', (event) => {
+                        event.target.closest(".menu_category").classList.toggle("category_folded");
+                    });
+                });
             });
             if (document.querySelector("body").dataset.leftMenuState === "true") {
                 LeftMenu.toggle();
@@ -1384,6 +1389,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 var JavascriptsChecksums = map[string]string{
-	"app": "eb93fb239f7624062538b0df4b839d4984bd7a94c2259897320c63249bb12999",
+	"app": "da1419ed6c48e10c2fc1d67350ca3a4a6e344f7ed67b43eda9e41a0fd4d0cd42",
 	"sw":  "74f8138fcb9f13251b777c740575823c1698bddbd16bcd46603929bacdc4064a",
 }
