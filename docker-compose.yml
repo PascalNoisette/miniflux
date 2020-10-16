@@ -41,10 +41,10 @@ services:
             - BASE_URL=https://rssfeed.netpascal.site/
         restart: "no"
     db:
-        image: postgres:latest
+        image: postgres:12
         environment:
             - POSTGRES_USER=miniflux
             - POSTGRES_PASSWORD=XXXX
         volumes:
-            - /media/tinyrssdb/:/var/lib/postgresql/data
+            - /home/pascal/miniflux/:/var/lib/postgresql/data
         restart: unless-stopped
